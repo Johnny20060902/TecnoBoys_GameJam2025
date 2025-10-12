@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
-    public string nextSceneName = "Raul_Introduction";
+    public string nextSceneName = "Johnny_FirstWorldLevel1";
     public float absorbDuration = 1f;
     public ScreenFader screenFader;
     public string messageText = "De Pronto Despiertas en un Lugar Desconocido...";
