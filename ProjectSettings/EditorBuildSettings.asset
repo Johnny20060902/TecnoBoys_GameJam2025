@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_Scenes/Raul_Menu.unity
     guid: 632a642af53758b498de8949c57e9011
+  - enabled: 1
+    path: Assets/00_Scenes/Johnny_FirstWorldLevel1.unity
+    guid: aba194ec0529eeb4aada55ca58eea38b
+  - enabled: 1
+    path: Assets/00_Scenes/Johnny_FirstWorldLevel2.unity
+    guid: f4c5d3d18ee82094e9134a1c7a0f080a
+  - enabled: 1
+    path: Assets/00_Scenes/Raul_IntroScene.unity
+    guid: 20dda33db8fb23b4ea59c7173742b432
   m_configObjects: {}
