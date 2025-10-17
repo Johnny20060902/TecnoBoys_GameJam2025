@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_Scenes/Johnny_FirstWorldLevel2.unity
     guid: f4c5d3d18ee82094e9134a1c7a0f080a
+  - enabled: 1
+    path: Assets/00_Scenes/Raul_IntroScene.unity
+    guid: 20dda33db8fb23b4ea59c7173742b432
   m_configObjects: {}
