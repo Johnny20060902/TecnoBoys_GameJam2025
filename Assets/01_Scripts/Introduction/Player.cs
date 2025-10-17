@@ -19,10 +19,24 @@ public class Player : MonoBehaviour
 
     private bool canMove = true;
 
+    private bool styleMoveY;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        string scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        if (scene == "Raul_Introduction")
+        {
+            styleMoveY = true;
+        }
+        else if (scene == "Raul_SecondWorldLevel1")
+        {
+            styleMoveY = false;
+        }
+        else if (scene == "Raul_SecondWorldLevel3")
+        {
+            styleMoveY = true;
+        }
     }
 
     // Update is called once per frame
@@ -45,15 +59,23 @@ public class Player : MonoBehaviour
         float x = 0f;
         float y = 0f;
 
-        if (Input.GetKey(KeyCode.W)) y += 1f;
-        if (Input.GetKey(KeyCode.S)) y -= 1f;
-        if (Input.GetKey(KeyCode.A)) x -= 1f;
-        if (Input.GetKey(KeyCode.D)) x += 1f;
+        if (styleMoveY)
+        {
+            if (Input.GetKey(KeyCode.W)) y += 1f;
+            if (Input.GetKey(KeyCode.S)) y -= 1f;
+            if (Input.GetKey(KeyCode.A)) x -= 1f;
+            if (Input.GetKey(KeyCode.D)) x += 1f;
 
-        moveInput = new Vector2(x, y).normalized;
-
-        if (rb != null)
+            moveInput = new Vector2(x, y).normalized;
             rb.velocity = moveInput * moveSpeed;
+        }
+        else
+        {
+            if (Input.GetKey(KeyCode.A)) x -= 1f;
+            if (Input.GetKey(KeyCode.D)) x += 1f;
+
+            rb.velocity = new Vector2(x * moveSpeed, rb.velocity.y);
+        }
 
         if (moveInput != Vector2.zero)
             lastMoveDir = moveInput;
@@ -63,13 +85,10 @@ public class Player : MonoBehaviour
     void Shoot()
     {
         if (!canShoot) return;
-
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 0f;
-
-
             Vector2 attackDir = (mousePos - FirePoint.position).normalized;
 
             if (bulletPrefab != null && FirePoint != null)
