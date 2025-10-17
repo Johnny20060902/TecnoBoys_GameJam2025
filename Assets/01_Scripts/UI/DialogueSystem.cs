@@ -34,6 +34,8 @@ public class DialogueSystem : MonoBehaviour
     private Coroutine typingCoroutine;
     private bool isTyping = false;
 
+    public NpcBasicController npc;
+
     private void Awake()
     {
         if (dialoguePanel != null) dialoguePanel.SetActive(false);
@@ -125,5 +127,10 @@ public class DialogueSystem : MonoBehaviour
 
         if (playerController != null) playerController.EnableMovement(true);
         if (boss != null) boss.EnableBoss(true);
+
+        if (npc != null)
+        {
+            npc.StartWalking();
+        }
     }
 }
