@@ -64,15 +64,14 @@ public class Player : MonoBehaviour
     {
         if (!canShoot) return;
 
-        Vector2 attackDir = Vector2.zero;
-
-        if (Input.GetKeyDown(KeyCode.UpArrow)) attackDir = Vector2.up;
-        if (Input.GetKeyDown(KeyCode.DownArrow)) attackDir = Vector2.down;
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) attackDir = Vector2.left;
-        if (Input.GetKeyDown(KeyCode.RightArrow)) attackDir = Vector2.right;
-
-        if (attackDir != Vector2.zero)
+        if (Input.GetMouseButtonDown(0))
         {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = 0f;
+
+
+            Vector2 attackDir = (mousePos - FirePoint.position).normalized;
+
             if (bulletPrefab != null && FirePoint != null)
             {
                 GameObject attack = Instantiate(bulletPrefab, FirePoint.position, Quaternion.identity);
