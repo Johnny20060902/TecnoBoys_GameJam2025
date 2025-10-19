@@ -32,5 +32,17 @@ public class BulletPlayer : MonoBehaviour
             //    Destroy(gameObject);
             //}
         }
+
+        if (collision.gameObject.CompareTag("SoldierAlien"))
+        {
+            Destroy(gameObject);
+            //Instantiate(explosion, transform.position, transform.rotation);
+            ITakeDamage damageable = collision.gameObject.GetComponent<ITakeDamage>();
+            if (damageable != null)
+            {
+                damageable.TakeDamage(damage);
+                Destroy(gameObject);
+            }
+        }
     }
 }

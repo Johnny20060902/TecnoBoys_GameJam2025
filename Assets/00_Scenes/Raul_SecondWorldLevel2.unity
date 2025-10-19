@@ -235,9 +235,12 @@ MonoBehaviour:
   rb: {fileID: 510073986}
   timer: 0
   timeBtwShoot: 1
-  canShoot: 1
-  FirePoint: {fileID: 0}
-  bulletPrefab: {fileID: 0}
+  canShoot: 0
+  canShootWorld: 0
+  FirePoint: {fileID: 1632779448}
+  bulletPrefab: {fileID: 7853192364867174633, guid: 5a08979200ab2174ea0b1d33d1705467, type: 3}
+  canJump: 1
+  forceJump: 5
 --- !u!50 &510073986
 Rigidbody2D:
   serializedVersion: 4
@@ -374,7 +377,8 @@ Transform:
   m_LocalPosition: {x: -7.16, y: -2.88, z: 0}
   m_LocalScale: {x: 1.1916, y: 1.6843, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1632779448}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &529675485
@@ -1279,6 +1283,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4a51cb654620c64b90f012a915fb2c9, type: 3}
+--- !u!1 &1632779447
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1632779448}
+  m_Layer: 0
+  m_Name: Firepoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1632779448
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632779447}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 510073989}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1740251176
 GameObject:
   m_ObjectHideFlags: 0
