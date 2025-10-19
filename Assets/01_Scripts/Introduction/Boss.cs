@@ -19,6 +19,9 @@ public class Boss : MonoBehaviour
     private float teleportTimer = 0f;
     private float targetOffsetY = 0f;
 
+
+    private bool canAct = true;
+
     [Header("Disparo")]
     public GameObject bulletBoss;
     public GameObject bulletBossPortal;
@@ -31,6 +34,8 @@ public class Boss : MonoBehaviour
 
     void Update()
     {
+        if (!canAct) return;
+
         HandleMovement();
         HandleTeleport();
         HandleShooting();
@@ -38,6 +43,12 @@ public class Boss : MonoBehaviour
     }
 
     #region Movimiento y Teletransporte
+
+    public void EnableBoss(bool enable)
+    {
+        canAct = enable;
+    }
+
     void HandleMovement()
     {
         moveTimer += Time.deltaTime;

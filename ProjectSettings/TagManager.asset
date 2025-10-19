@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Boss
   - Enemy
+  - SoldierAlien
   layers:
   - Default
   - TransparentFX
@@ -16,6 +17,7 @@ TagManager:
   - Sword
   - Player
   - Enemy
+  - 
   - 
   - 
   - 
