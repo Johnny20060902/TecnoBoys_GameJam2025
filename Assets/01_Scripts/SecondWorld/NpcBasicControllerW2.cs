@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NpcBasicController : MonoBehaviour
+public class NpcBasicControllerW2 : MonoBehaviour
 {
     public float moveSpeed = 5f;     
     public bool moveRight = false;

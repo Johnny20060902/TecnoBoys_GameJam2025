@@ -34,7 +34,14 @@ public class DialogueSystem : MonoBehaviour
     private Coroutine typingCoroutine;
     private bool isTyping = false;
 
-    public NpcBasicController npc;
+    public NpcBasicControllerW2 npc;
+    public List<SoldierAlien> soldierAliens = new List<SoldierAlien>();
+
+    public bool activateNpcWalk = false;
+    public bool activateEnemies = false;
+    public bool activateNextScene = false;
+
+    public GameObject SceneNew;
 
     private void Awake()
     {
@@ -69,11 +76,15 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
-    public void StartDialogue(DialogueLine[] dialogueLines)
+    public void StartDialogue(DialogueLine[] dialogueLines, bool npcWalk = false, bool enemiesAttack = false, bool NextScene = false)
     {
         lines = dialogueLines;
         index = 0;
         dialoguePanel.SetActive(true);
+
+        activateNpcWalk = npcWalk;
+        activateEnemies = enemiesAttack;
+        activateNextScene = NextScene;
 
         if (playerController != null) playerController.EnableMovement(false);
         if (boss != null) boss.EnableBoss(false);
@@ -128,9 +139,22 @@ public class DialogueSystem : MonoBehaviour
         if (playerController != null) playerController.EnableMovement(true);
         if (boss != null) boss.EnableBoss(true);
 
-        if (npc != null)
-        {
+        if (activateNpcWalk && npc != null)
             npc.StartWalking();
+
+        if (activateEnemies && soldierAliens != null && soldierAliens.Count > 0)
+        {
+            foreach (SoldierAlien e in soldierAliens)
+            {
+                if (e != null)
+                    e.EnableAttack(true);
+            }
+        }
+
+
+        if (activateNextScene && SceneNew != null)
+        {
+            SceneNew.SetActive(true);
         }
     }
 }

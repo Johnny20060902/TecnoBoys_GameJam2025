@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class ChangeScene : MonoBehaviour
+public class ChangeSceneW2 : MonoBehaviour
 {
     public string scene;
 
@@ -31,6 +31,18 @@ public class ChangeScene : MonoBehaviour
         {
             messageText = "Entras a la ciudad";
             nextSceneName = "Raul_SecondWorldLevel3";
+            StartCoroutine(TransitionScene());
+        }
+        else if (collision.gameObject.CompareTag("Player") && scene == "Raul_SecondWorldLevel3")
+        {
+            messageText = "Esperas unos minutos y ves llegar a alguien a lo lejos";
+            nextSceneName = "Raul_SecondWorldLevel4";
+            StartCoroutine(TransitionScene());
+        }
+        else if (collision.gameObject.CompareTag("Player") && scene == "Raul_SecondWorldLevel4")
+        {
+            messageText = "Te diriges hacia la direccion por donde escapó Val’Thar y encuentras su campamento";
+            nextSceneName = "Raul_SecondWorldLevel5";
             StartCoroutine(TransitionScene());
         }
     }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7965418877513122585}
   - component: {fileID: 4014054986719567469}
   - component: {fileID: 8812008277922232910}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,11 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0cd0e7a9cd4e664a80d167fee86e167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: -3804645209478346607, guid: 66233265c0e862d4fae7f367194cdd42, type: 3}
-  radiusActivacion: 8
-  intervalo: 10
-  player: {fileID: 7320890290179355678, guid: 38dba4a5c2a4e974d91f9870de4e3bfa, type: 3}
-  maxVivos: 5
+  meleeEnemyPrefab: {fileID: 0}
+  shooterEnemyPrefab: {fileID: 0}
+  spawnRate: 5
+  maxEnemies: 3
+  spawnRadius: 3
 --- !u!114 &8812008277922232910
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Boss
   - Enemy
+  - SoldierAlien
+  - PortalBlue
+  - 'PortalOrange '
+  - SoldierGunAlien
   layers:
   - Default
   - TransparentFX
@@ -13,9 +17,9 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Sword
+  - Player
+  - Enemy
   - 
   - 
   - 

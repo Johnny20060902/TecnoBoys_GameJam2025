@@ -14,7 +14,9 @@ GameObject:
   - component: {fileID: 7836718242325664055}
   - component: {fileID: 3313144341827365813}
   - component: {fileID: 1476143846267802198}
-  m_Layer: 0
+  - component: {fileID: -2491693036708445239}
+  - component: {fileID: 4179997860233847187}
+  m_Layer: 7
   m_Name: Player_Johnny
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -203,13 +205,52 @@ MonoBehaviour:
   swordInHand: {fileID: 7514149043501707655}
   meleeOrigin: {fileID: 8712567089362332820}
   meleeRange: 1.1
+  meleeHeight: 1
   swordDamage: 2
   enemyMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 257
+  pickUpRange: 1.2
+  swordLayer:
+    serializedVersion: 2
+    m_Bits: 64
   imbueMultiplier: 2
   imbueDuration: 6
-  imbuedColor: {r: 0.7, g: 0.9, b: 1, a: 1}
+  imbuedColor: {r: 0.9622642, g: 0.9622642, b: 0.9622642, a: 1}
+  handOffsetX: 0.6
+  handOffsetY: 0
+--- !u!114 &-2491693036708445239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553631039245730585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2220f697fc6695949907fd77529de6a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  deathEffect: {fileID: 0}
+  destroyOnDeath: 1
+--- !u!114 &4179997860233847187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553631039245730585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2220f697fc6695949907fd77529de6a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  deathEffect: {fileID: 0}
+  destroyOnDeath: 1
 --- !u!1 &1922677589488886160
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,7 +260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8712567089362332820}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MeleeOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +291,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5611804018937229453}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +322,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4063965816874109426}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Firepoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +354,7 @@ GameObject:
   m_Component:
   - component: {fileID: 862231933889905163}
   - component: {fileID: 8171599465232405321}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sword In Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +418,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3679245, g: 0.35230508, b: 0.35230508, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
