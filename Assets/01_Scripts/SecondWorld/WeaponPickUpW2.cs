@@ -7,6 +7,7 @@ public class WeaponPickUpW2 : MonoBehaviour
     public SceneManagerW2 sceneManager; 
     public GameObject thirdWeapon; 
     public KeyCode pickupKey = KeyCode.E;
+    public GameObject wallNotEnemy;
 
     private bool isInRange = false;
 
@@ -25,11 +26,25 @@ public class WeaponPickUpW2 : MonoBehaviour
         if (thirdWeapon != null)
             thirdWeapon.SetActive(true);
 
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            Player playerScript = player.GetComponent<Player>();
+            if (playerScript != null)
+            {
+                playerScript.UnlockThirdWeapon();
+            }
+        }
+
         gameObject.SetActive(false);
 
         if (sceneManager != null)
         {
             sceneManager.StartEnemySequence();
+            if (wallNotEnemy != null)
+            {
+                wallNotEnemy.SetActive(false);
+            }
         }
     }
 

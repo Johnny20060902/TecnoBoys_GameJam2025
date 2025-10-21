@@ -39,6 +39,12 @@ public class ChangeSceneW2 : MonoBehaviour
             nextSceneName = "Raul_SecondWorldLevel4";
             StartCoroutine(TransitionScene());
         }
+        else if (collision.gameObject.CompareTag("Player") && scene == "Raul_SecondWorldLevel4")
+        {
+            messageText = "Te diriges hacia la direccion por donde escapó Val’Thar y encuentras su campamento";
+            nextSceneName = "Raul_SecondWorldLevel5";
+            StartCoroutine(TransitionScene());
+        }
     }
 
     private IEnumerator TransitionScene()

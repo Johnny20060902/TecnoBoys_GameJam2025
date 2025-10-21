@@ -10,8 +10,9 @@ public enum WeaponTypeW2
     AlienGun
 }
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, ITakeDamage
 {
+    public float life = 100f;
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
 
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
     public bool canShootWorld;
     public Transform FirePoint;
     public GameObject bulletPrefab;
+    public GameObject AlienbulletPrefab;
 
     private Vector2 moveInput;
     private Vector2 lastMoveDir = Vector2.down;
@@ -41,6 +43,8 @@ public class Player : MonoBehaviour
     public LayerMask enemyLayers;
     public Transform attackPoint;
     public GameObject swordObject;
+
+    public GameObject alienGunObject;
 
     int damage = 1;
     private bool hasAlienGun = false;
@@ -117,9 +121,10 @@ public class Player : MonoBehaviour
     void UpdateWeaponVisibility()
     {
         if (swordObject != null)
-        {
             swordObject.SetActive(currentWeapon == WeaponTypeW2.Sword);
-        }
+
+        if (alienGunObject != null)
+            alienGunObject.SetActive(currentWeapon == WeaponTypeW2.AlienGun);
     }
 
 
@@ -146,7 +151,7 @@ public class Player : MonoBehaviour
         }
         if (currentWeapon == WeaponTypeW2.AlienGun)
         {
-            Shoot();
+            ShootAlienAcid();
         }
     }
 
@@ -221,6 +226,37 @@ public class Player : MonoBehaviour
         }
     }
 
+    void ShootAlienAcid()
+    {
+        if (!canShoot) return;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = 0f;
+            Vector2 attackDir = (mousePos - FirePoint.position).normalized;
+
+            if (AlienbulletPrefab != null && FirePoint != null)
+            {
+                float spreadAngle = 15f;
+                int bulletCount = 3;
+
+                for (int i = 0; i < bulletCount; i++)
+                {
+                    float angle = (i - 1) * spreadAngle;
+
+                    Vector2 rotatedDir = Quaternion.Euler(0, 0, angle) * attackDir;
+
+                    GameObject bullet = Instantiate(AlienbulletPrefab, FirePoint.position, Quaternion.identity);
+                    bullet.transform.up = rotatedDir;
+                }
+            }
+
+            canShoot = false;
+            timer = 0f;
+        }
+    }
+
     void CheckIfCanShoot()
     {
         if (!canShootWorld) return;
@@ -258,5 +294,14 @@ public class Player : MonoBehaviour
         if (attackPoint == null) return;
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, swordAttackRange);
+    }
+
+    public void TakeDamage(float dmg)
+    {
+        life -= dmg;
+        if (life <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

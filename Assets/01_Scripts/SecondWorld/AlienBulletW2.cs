@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletPlayer : MonoBehaviour
+public class AlienBulletW2 : MonoBehaviour
 {
     public static float moveSpeed = 5;
     public float timeToDestroy = 5;

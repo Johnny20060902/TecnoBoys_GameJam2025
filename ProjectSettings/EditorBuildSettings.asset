@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_Scenes/Raul_SecondWorldLevel4.unity
     guid: e6e62cc2a7516a94f8da765966a55a8f
+  - enabled: 1
+    path: Assets/00_Scenes/Raul_SecondWorldLevel5.unity
+    guid: ff060c3b18fa102419cfa492b1f74a5b
   m_configObjects: {}

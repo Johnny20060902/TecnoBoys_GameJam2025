@@ -17,6 +17,18 @@ public class SoldierAlien : MonoBehaviour, ITakeDamage
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        string scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        if (scene == "Raul_SecondWorldLevel4")
+        {
+            isActive = true;
+        }
+        else
+        {
+            isActive = false;
+        }
+
+
     }
 
     void Update()

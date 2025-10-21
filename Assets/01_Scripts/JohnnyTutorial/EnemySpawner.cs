@@ -1,90 +1,91 @@
 using UnityEngine;
-using System.Collections.Generic;
 
-[DisallowMultipleComponent]
 public class EnemySpawner : MonoBehaviour
 {
-    [Header("Prefabs & Refs")]
-    public Enemy enemyPrefab;             // Asigna tu prefab Enemy
-    public Transform player;              // Player_Johnny
-    public Collider2D spawnerCollider;    // Asigna el collider del Spawner (el BoxCollider2D de la "casa")
+    [Header("Prefabs de enemigos")]
+    public GameObject meleeEnemyPrefab;
+    public GameObject shooterEnemyPrefab;
 
-    [Header("Lógica de Spawn")]
-    public float radiusActivacion = 8f;   // Distancia para activar
-    public float intervalo = 10f;         // Segundos entre spawns
-    public int maxVivos = 5;              // Límite simultáneo
+    [Header("Configuración de spawn")]
+    [Tooltip("Tiempo entre spawns")]
+    public float spawnRate = 5f;
 
-    [Header("Punto de salida")]
-    public Vector2 spawnOffset = new Vector2(-1.5f, 0f); // SIEMPRE a la IZQUIERDA del spawner
+    [Tooltip("Cantidad máxima de enemigos simultáneos")]
+    public int maxEnemies = 3;
 
-    private float timer = 0f;
-    private readonly List<Enemy> vivos = new();
+    [Tooltip("Distancia lateral desde el spawner donde aparecerán los enemigos")]
+    public float spawnRadius = 3f;
 
-    // control primer spawn
-    private bool wasInRange = false;
-    private bool firstSpawnDone = false;
+    private float nextSpawn;
+    private int currentEnemies;
 
     void Update()
     {
-        vivos.RemoveAll(e => e == null);
-        if (player == null || enemyPrefab == null) return;
-
-        float dist = Vector2.Distance(transform.position, player.position);
-        bool inRange = dist <= radiusActivacion;
-
-        // primer spawn instantáneo al entrar por primera vez
-        if (inRange && !wasInRange)
+        if (Time.time > nextSpawn && currentEnemies < maxEnemies)
         {
-            if (!firstSpawnDone && vivos.Count < maxVivos)
-            {
-                Spawn();
-                firstSpawnDone = true;
-                timer = 0f;
-            }
+            SpawnRandomEnemy();
+            nextSpawn = Time.time + spawnRate;
         }
+    }
 
-        if (inRange)
+    void SpawnRandomEnemy()
+    {
+        // 🔹 Elegir tipo de enemigo: 0 = melee, 1 = shooter
+        int type = Random.Range(0, 2);
+        GameObject prefab = (type == 0) ? meleeEnemyPrefab : shooterEnemyPrefab;
+
+        // 🔹 Elegir lado (izquierda o derecha)
+        float side = Random.value < 0.5f ? -1f : 1f;
+        Vector3 spawnPos = transform.position + new Vector3(spawnRadius * side, 0f, 0f);
+
+        // 🔹 Instanciar enemigo
+        GameObject enemy = Instantiate(prefab, spawnPos, Quaternion.identity);
+        currentEnemies++;
+
+        // 🔹 Hacer que mire hacia el centro (o jugador si está)
+        Transform player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        if (player != null)
         {
-            timer += Time.deltaTime;
-            if (timer >= intervalo && vivos.Count < maxVivos)
-            {
-                Spawn();
-                timer = 0f;
-            }
+            Vector3 dir = player.position - enemy.transform.position;
+            float desired = Mathf.Sign(dir.x);
+            Vector3 scale = enemy.transform.localScale;
+            scale.x = Mathf.Abs(scale.x) * desired;
+            enemy.transform.localScale = scale;
         }
         else
         {
-            timer = 0f;
+            // si no hay jugador, simplemente mira hacia el centro del mapa
+            Vector3 scale = enemy.transform.localScale;
+            scale.x = Mathf.Abs(scale.x) * -side;
+            enemy.transform.localScale = scale;
         }
 
-        wasInRange = inRange;
+        // 🔹 Registrar al spawner
+        EnemyTracker tracker = enemy.AddComponent<EnemyTracker>();
+        tracker.Init(this);
     }
 
-    private void Spawn()
+    // 🔹 Llamado por los enemigos al morir
+    public void EnemyDied()
     {
-        // Posición de salida: a la IZQUIERDA del spawner
-        Vector3 pos = transform.position + (Vector3)spawnOffset;
-        Enemy e = Instantiate(enemyPrefab, pos, Quaternion.identity);
-        e.target = player;
+        currentEnemies = Mathf.Max(0, currentEnemies - 1);
+    }
+}
 
-        // Evita empujones: el enemigo NO colisiona con la “casa”
-        if (spawnerCollider != null)
-        {
-            var enemyCol = e.GetComponent<Collider2D>();
-            if (enemyCol != null)
-                Physics2D.IgnoreCollision(enemyCol, spawnerCollider, true);
-        }
 
-        vivos.Add(e);
+// ===== Clase auxiliar =====
+public class EnemyTracker : MonoBehaviour
+{
+    private EnemySpawner spawner;
+
+    public void Init(EnemySpawner spawnerRef)
+    {
+        spawner = spawnerRef;
     }
 
-    void OnDrawGizmosSelected()
+    private void OnDestroy()
     {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, radiusActivacion);
-
-        // Dibuja dónde saldrán los enemigos
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawWireCube(transform.position + (Vector3)spawnOffset, new Vector3(0.3f, 0.3f, 0f));
+        if (spawner != null)
+            spawner.EnemyDied();
     }
 }
