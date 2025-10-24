@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DetectPlayerW2 : MonoBehaviour
 {
-    public GameObject Spawn;
+    public List<GameObject> Spawns;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,9 +22,13 @@ public class DetectPlayerW2 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (Spawn != null)
+            if (Spawns != null)
             {
-                Spawn.SetActive(true);
+                foreach (GameObject spawn in Spawns) 
+                {
+                    spawn.SetActive(true);
+                }
+
             }
 
         }

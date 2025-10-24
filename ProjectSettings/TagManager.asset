@@ -10,6 +10,7 @@ TagManager:
   - PortalBlue
   - 'PortalOrange '
   - SoldierGunAlien
+  - SoldierStrongAlien
   layers:
   - Default
   - TransparentFX

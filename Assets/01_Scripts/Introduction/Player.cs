@@ -82,6 +82,13 @@ public class Player : MonoBehaviour, ITakeDamage
             canShootWorld = true;
             canJump = false;
         }
+        else if (scene == "Raul_SecondWorldLevel5")
+        {
+            styleMoveY = true;
+            canShootWorld = true;
+            canJump = false;
+            hasAlienGun= true;
+        }
         UpdateWeaponVisibility();
     }
 

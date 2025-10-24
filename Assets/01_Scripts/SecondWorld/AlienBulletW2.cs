@@ -33,7 +33,7 @@ public class AlienBulletW2 : MonoBehaviour
             //}
         }
 
-        if (collision.gameObject.CompareTag("SoldierAlien") || collision.gameObject.CompareTag("SoldierGunAlien"))
+        if (collision.gameObject.CompareTag("SoldierAlien") || collision.gameObject.CompareTag("SoldierGunAlien") || collision.gameObject.CompareTag("SoldierStrongAlien"))
         {
             Destroy(gameObject);
             //Instantiate(explosion, transform.position, transform.rotation);

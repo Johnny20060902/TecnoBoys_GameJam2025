@@ -23,10 +23,6 @@ public class SoldierAlien : MonoBehaviour, ITakeDamage
         {
             isActive = true;
         }
-        else
-        {
-            isActive = false;
-        }
 
 
     }
