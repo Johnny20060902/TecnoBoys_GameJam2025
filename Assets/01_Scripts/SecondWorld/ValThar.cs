@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ValThar : MonoBehaviour
+public class ValThar : MonoBehaviour, ITakeDamage
 {
     [Header("Stats")]
     public float life = 50f;
-    public float moveSpeed = 6f;
+    public float moveSpeed = 5.5f;
     public float stopDistance = 5f;
     public float dashSpeed = 7f;
     public float dashTime = 0.6f;
     public float shootInterval = 2f;
     public int bulletsPerBurst = 3;
     public float burstDelay = 0.2f;
+
+    [Header("Fan Shot Settings")]
+    public int fanBullets = 5;         
+    public float fanSpreadAngle = 45f; 
 
     [Header("References")]
     public GameObject bulletPrefab;
@@ -24,9 +28,12 @@ public class ValThar : MonoBehaviour
     private bool canDash = true;
     public bool isActive = false;
 
+    public GameObject DialogueFinish;
+    public GameObject AlienPower;
+
     void Start()
     {
-        string scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        string scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name; 
         if (scene == "Raul_SecondWorldLevel5")
         {
             rb = GetComponent<Rigidbody2D>();
@@ -37,46 +44,45 @@ public class ValThar : MonoBehaviour
 
     void Update()
     {
-
         if (!isActive || player == null) return;
 
         float distance = Vector2.Distance(transform.position, player.position);
 
         if (distance > stopDistance)
         {
-            MoveTowardsPlayer();
+            MoveTowardsPlayerWithZigZag();
         }
         else
         {
             rb.velocity = Vector2.zero;
-
-            // Apuntar al jugador
             Vector2 direction = (player.position - transform.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, angle - 90f);
 
-            // Ataques
             if (canShoot)
-                StartCoroutine(ShootBurst());
+                StartCoroutine(ShootFanBurst());
 
             if (canDash && distance < 4f)
                 StartCoroutine(DashTowardsPlayer());
         }
     }
 
-    void MoveTowardsPlayer()
+    void MoveTowardsPlayerWithZigZag()
     {
         Vector2 direction = (player.position - transform.position).normalized;
-        rb.velocity = direction * moveSpeed;
+
+        Vector2 zigZag = new Vector2(Mathf.Sin(Time.time * 5f), 0);
+
+        rb.velocity = (direction + zigZag).normalized * moveSpeed;
     }
 
-    IEnumerator ShootBurst()
+    IEnumerator ShootFanBurst()
     {
         canShoot = false;
 
         for (int i = 0; i < bulletsPerBurst; i++)
         {
-            Shoot();
+            ShootFan(fanBullets, fanSpreadAngle);
             yield return new WaitForSeconds(burstDelay);
         }
 
@@ -84,17 +90,21 @@ public class ValThar : MonoBehaviour
         canShoot = true;
     }
 
-    void Shoot()
+    void ShootFan(int bullets, float spreadAngle)
     {
         if (bulletPrefab == null || shootPoint == null) return;
 
-        GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
-        Rigidbody2D rbBullet = bullet.GetComponent<Rigidbody2D>();
+        Vector2 dir = (player.position - shootPoint.position).normalized;
+        float baseAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-        if (rbBullet != null && player != null)
+        for (int i = 0; i < bullets; i++)
         {
-            Vector2 dir = (player.position - shootPoint.position).normalized;
-            rbBullet.velocity = dir * 8f; // velocidad de bala
+            float angle = baseAngle - spreadAngle / 2 + (spreadAngle / (bullets - 1)) * i;
+            Quaternion rot = Quaternion.Euler(0, 0, angle - 90f);
+            GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, rot);
+            Rigidbody2D rbBullet = bullet.GetComponent<Rigidbody2D>();
+            if (rbBullet != null)
+                rbBullet.velocity = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad)) * 8f;
         }
     }
 
@@ -114,7 +124,6 @@ public class ValThar : MonoBehaviour
 
         rb.velocity = Vector2.zero;
 
-        // Cooldown antes del próximo dash
         yield return new WaitForSeconds(2f);
         canDash = true;
     }
@@ -129,8 +138,9 @@ public class ValThar : MonoBehaviour
         life -= dmg;
         if (life <= 0)
         {
+            Instantiate(DialogueFinish, transform.position, Quaternion.identity);
+            Instantiate(AlienPower, transform.position, Quaternion.identity);
             Destroy(gameObject);
-            // Aquí puedes agregar animación de muerte o evento de victoria
         }
     }
 
@@ -139,6 +149,5 @@ public class ValThar : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, stopDistance);
     }
-
 
 }

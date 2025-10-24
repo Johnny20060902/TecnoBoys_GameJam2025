@@ -1611,9 +1611,9 @@ GameObject:
   - component: {fileID: 551052712}
   - component: {fileID: 551052711}
   - component: {fileID: 551052710}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: "Val\u2019Thar"
-  m_TagString: Untagged
+  m_TagString: Valthar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1703,16 +1703,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 50
-  moveSpeed: 3
+  moveSpeed: 5.5
   stopDistance: 5
   dashSpeed: 7
   dashTime: 0.6
   shootInterval: 2
   bulletsPerBurst: 3
   burstDelay: 0.2
-  bulletPrefab: {fileID: 0}
-  shootPoint: {fileID: 0}
+  fanBullets: 5
+  fanSpreadAngle: 45
+  bulletPrefab: {fileID: 8964598431587174435, guid: 9ec65ee1313406b459131131d8af1658, type: 3}
+  shootPoint: {fileID: 1312142310}
   isActive: 0
+  DialogueFinish: {fileID: 6356827770790708278, guid: 846644fa63c251a44ab3f7d1fabf5d27, type: 3}
+  AlienPower: {fileID: 4917158590276955544, guid: ee12c27be39cebd4187f7f95c286857d, type: 3}
 --- !u!212 &551052713
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1777,7 +1781,8 @@ Transform:
   m_LocalPosition: {x: 52.7, y: 42.6, z: 0}
   m_LocalScale: {x: 1.7736, y: 1.7349, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1312142310}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &586577002
@@ -3078,6 +3083,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c45d94f9224079d4d8782b788aa3caeb, type: 3}
+--- !u!1 &1312142309
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1312142310}
+  m_Layer: 0
+  m_Name: Firepoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1312142310
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312142309}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 551052714}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1382482249 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5549487830686504318, guid: 7f092e7e8379e2549a0b74e77ad40899, type: 3}
@@ -4179,6 +4215,9 @@ MonoBehaviour:
   attackPoint: {fileID: 30087926}
   swordObject: {fileID: 1129194755}
   alienGunObject: {fileID: 471183830}
+  dashSpeed: 15
+  dashTime: 0.2
+  dashCooldown: 4
 --- !u!50 &1889587210
 Rigidbody2D:
   serializedVersion: 4

@@ -45,6 +45,12 @@ public class ChangeSceneW2 : MonoBehaviour
             nextSceneName = "Raul_SecondWorldLevel5";
             StartCoroutine(TransitionScene());
         }
+        else if (collision.gameObject.CompareTag("Player") && scene == "Raul_SecondWorldLevel5")
+        {
+            messageText = "Despues de agarrar el objeto extraño te desmayaste y apareces en un lugar desconocido";
+            nextSceneName = "Raul_SecondWorldLevel6";
+            StartCoroutine(TransitionScene());
+        }
     }
 
     private IEnumerator TransitionScene()

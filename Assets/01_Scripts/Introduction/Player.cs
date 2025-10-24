@@ -38,6 +38,7 @@ public class Player : MonoBehaviour, ITakeDamage
     int numberJumps;
 
 
+
     public float swordAttackRange = 1f;
     public int swordDamage = 1;
     public LayerMask enemyLayers;
@@ -48,6 +49,14 @@ public class Player : MonoBehaviour, ITakeDamage
 
     int damage = 1;
     private bool hasAlienGun = false;
+
+
+    [Header("Dash")]
+    public float dashSpeed = 15f;         
+    public float dashTime = 0.2f;          
+    public float dashCooldown = 4f;        
+    private bool canDash = true;
+    private bool canDashWorld = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +66,7 @@ public class Player : MonoBehaviour, ITakeDamage
             styleMoveY = true;
             canShootWorld = true;
             canJump = false;
+            canDashWorld = false;
         }
         else if (scene == "Raul_SecondWorldLevel1")
         {
@@ -75,12 +85,14 @@ public class Player : MonoBehaviour, ITakeDamage
             styleMoveY = true;
             canShootWorld = true;
             canJump = false;
+            canDashWorld = true;
         }
         else if (scene == "Raul_SecondWorldLevel4")
         {
             styleMoveY = true;
             canShootWorld = true;
             canJump = false;
+            canDashWorld = true;
         }
         else if (scene == "Raul_SecondWorldLevel5")
         {
@@ -88,6 +100,15 @@ public class Player : MonoBehaviour, ITakeDamage
             canShootWorld = true;
             canJump = false;
             hasAlienGun= true;
+            canDashWorld = true;
+        }
+        else if (scene == "Raul_SecondWorldLevel6")
+        {
+            styleMoveY = true;
+            canShootWorld = true;
+            canJump = false;
+            hasAlienGun = true;
+            canDashWorld = true;
         }
         UpdateWeaponVisibility();
     }
@@ -114,12 +135,41 @@ public class Player : MonoBehaviour, ITakeDamage
             UpdateWeaponVisibility();
         }
 
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && canDashWorld)
+        {
+            StartCoroutine(Dash());
+        }
+
         Move();
         RotateSword(); 
         CheckIfCanShoot();
         Attack();
         Jump();
     }
+
+    IEnumerator Dash()
+    {
+        canDash = false;
+
+        Vector2 dashDir = lastMoveDir;
+        if (dashDir == Vector2.zero) dashDir = Vector2.up; 
+
+        Vector2 originalVelocity = rb.velocity;
+
+        float elapsed = 0f;
+        while (elapsed < dashTime)
+        {
+            rb.velocity = dashDir.normalized * dashSpeed;
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        rb.velocity = originalVelocity;
+
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
+    }
+
     public void UnlockThirdWeapon()
     {
         hasAlienGun = true;

@@ -11,6 +11,8 @@ TagManager:
   - 'PortalOrange '
   - SoldierGunAlien
   - SoldierStrongAlien
+  - Valthar
+  - 'XarKal '
   layers:
   - Default
   - TransparentFX
