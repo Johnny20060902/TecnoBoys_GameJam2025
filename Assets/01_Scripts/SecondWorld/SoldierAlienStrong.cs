@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoldierAlienWithGun : MonoBehaviour, ITakeDamage
+public class SoldierAlienStrong : MonoBehaviour, ITakeDamage
 {
     [Header("Stats")]
-    public float life = 3f;
-    public float moveSpeed = 2f;
+    public float life = 20f;
+    public float moveSpeed = 4f;
     public float stopDistance = 6f;
-    public float shootInterval = 1.5f; 
+    public float shootInterval = 1.5f;
     public float bulletSpeed = 8f;
 
     [Header("References")]
@@ -25,15 +25,6 @@ public class SoldierAlienWithGun : MonoBehaviour, ITakeDamage
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
 
-        string scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-        if (scene == "Raul_SecondWorldLevel4")
-        {
-            isActive = true;
-        }
-        if (scene == "Raul_SecondWorldLevel5")
-        {
-            isActive = true;
-        }
     }
 
     void Update()
@@ -63,7 +54,11 @@ public class SoldierAlienWithGun : MonoBehaviour, ITakeDamage
     IEnumerator ShootRoutine()
     {
         canShoot = false;
-        Shoot();
+        for (int i = 0; i < 2; i++) 
+        {
+            Shoot();
+            yield return new WaitForSeconds(0.2f); 
+        }
         yield return new WaitForSeconds(shootInterval);
         canShoot = true;
     }

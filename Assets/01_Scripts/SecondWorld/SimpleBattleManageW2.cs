@@ -10,7 +10,7 @@ public class SimpleBattleManageW2 : MonoBehaviour
     {
         if (spawn.activeInHierarchy)
         {
-            int enemiesLeft = GameObject.FindGameObjectsWithTag("Enemy").Length;
+            int enemiesLeft = GameObject.FindGameObjectsWithTag("SoldierAlien").Length + GameObject.FindGameObjectsWithTag("SoldierStrongAlien").Length + GameObject.FindGameObjectsWithTag("SoldierGunAlien").Length;
 
             if (enemiesLeft == 0)
             {

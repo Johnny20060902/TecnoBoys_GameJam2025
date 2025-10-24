@@ -1,11 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DetectPlayerW2 : MonoBehaviour
+public class AlienPower : MonoBehaviour
 {
-    public List<GameObject> Spawns;
+    public GameObject NextScene;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,20 +16,11 @@ public class DetectPlayerW2 : MonoBehaviour
     {
         
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (Spawns != null)
-            {
-                foreach (GameObject spawn in Spawns) 
-                {
-                    spawn.SetActive(true);
-                }
-
-            }
-
+            Instantiate(NextScene, transform.position, Quaternion.identity);
         }
     }
 }
