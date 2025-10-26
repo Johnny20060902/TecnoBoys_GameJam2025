@@ -1927,6 +1927,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Transition
       objectReference: {fileID: 0}
+    - target: {fileID: 7073095209557757592, guid: e94a766004907374eadf631aeb231b11, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3158,6 +3162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c954b3cc034ca44e9e4c94aef02d6de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 100
   moveSpeed: 5
   rb: {fileID: 1526576298}
   currentWeapon: 1
@@ -3167,6 +3172,7 @@ MonoBehaviour:
   canShootWorld: 0
   FirePoint: {fileID: 1494681910}
   bulletPrefab: {fileID: 7853192364867174633, guid: 5a08979200ab2174ea0b1d33d1705467, type: 3}
+  AlienbulletPrefab: {fileID: 0}
   canJump: 0
   forceJump: 5
   swordAttackRange: 1
@@ -3176,6 +3182,7 @@ MonoBehaviour:
     m_Bits: 64
   attackPoint: {fileID: 1683766226}
   swordObject: {fileID: 721853208}
+  alienGunObject: {fileID: 0}
 --- !u!50 &1526576298
 Rigidbody2D:
   serializedVersion: 4

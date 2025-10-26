@@ -6,7 +6,7 @@ public class PlayerJohnny : MonoBehaviour
 {
     [Header("Movimiento")]
     public float moveSpeed = 6f;
-    public float jumpForce = 12f;
+    public float jumpForce = 16f;
     public LayerMask groundMask;
     public Transform groundCheck;
     public Vector2 groundCheckSize = new Vector2(0.8f, 0.12f);

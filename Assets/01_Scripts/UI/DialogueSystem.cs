@@ -40,6 +40,9 @@ public class DialogueSystem : MonoBehaviour
     public bool activateNpcWalk = false;
     public bool activateEnemies = false;
     public bool activateNextScene = false;
+    public bool activateValthar = false;
+
+    public ValThar valthar;
 
     public GameObject SceneNew;
 
@@ -76,7 +79,7 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
-    public void StartDialogue(DialogueLine[] dialogueLines, bool npcWalk = false, bool enemiesAttack = false, bool NextScene = false)
+    public void StartDialogue(DialogueLine[] dialogueLines, bool npcWalk = false, bool enemiesAttack = false, bool NextScene = false, bool valthar = false)
     {
         lines = dialogueLines;
         index = 0;
@@ -85,6 +88,7 @@ public class DialogueSystem : MonoBehaviour
         activateNpcWalk = npcWalk;
         activateEnemies = enemiesAttack;
         activateNextScene = NextScene;
+        activateValthar = valthar;
 
         if (playerController != null) playerController.EnableMovement(false);
         if (boss != null) boss.EnableBoss(false);
@@ -149,6 +153,11 @@ public class DialogueSystem : MonoBehaviour
                 if (e != null)
                     e.EnableAttack(true);
             }
+        }
+
+        if (activateValthar)
+        {
+            valthar.EnableAttack(true);
         }
 
 
