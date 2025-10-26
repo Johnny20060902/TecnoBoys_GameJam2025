@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7424896411313653837
+--- !u!1 &7151705895618923118
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,61 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5563146381547006029}
-  - component: {fileID: 8222960060273513141}
-  - component: {fileID: 9018970365911533483}
-  - component: {fileID: 9221973767095397239}
-  m_Layer: 10
-  m_Name: PortalBlue
-  m_TagString: PortalBlue
+  - component: {fileID: 1160025867226872792}
+  - component: {fileID: 5676220028981637638}
+  - component: {fileID: 523453982950988052}
+  - component: {fileID: 2831084606746240734}
+  m_Layer: 0
+  m_Name: Portal
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5563146381547006029
+--- !u!4 &1160025867226872792
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7424896411313653837}
+  m_GameObject: {fileID: 7151705895618923118}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.331536, y: 0.40039563, z: 0}
-  m_LocalScale: {x: 1.38, y: 1.39, z: 1}
+  m_LocalPosition: {x: 109.18, y: 3.79, z: 0}
+  m_LocalScale: {x: 1.3943, y: 2.0078, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8222960060273513141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7424896411313653837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 468daed5901f38d479a84e71e3ab0a83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isBlue: 1
-  linkedPortal: {fileID: 0}
-  exitOffset: 1
-  teleportCooldown: 0.25
-  momentumMultiplier: 1
-  minExitBoost: 6
-  maxExitSpeed: 80
-  environmentMask:
-    serializedVersion: 2
-    m_Bits: 8
---- !u!212 &9018970365911533483
+--- !u!212 &5676220028981637638
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7424896411313653837}
+  m_GameObject: {fileID: 7151705895618923118}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -97,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0.18113232, b: 1, a: 1}
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 0.3598578, g: 0.1273585, b: 0.509434, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -108,13 +86,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &9221973767095397239
-CircleCollider2D:
+--- !u!114 &523453982950988052
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7424896411313653837}
+  m_GameObject: {fileID: 7151705895618923118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e098cf448eb48645afc787fbe7265be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextSceneName: Johnny_FirstWorldLevel2
+  screenFader: {fileID: 0}
+  message: "Nivel 2 \u2013 Pr\xF3ximamente"
+--- !u!61 &2831084606746240734
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7151705895618923118}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -141,5 +134,15 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
