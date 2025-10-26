@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 2379440295632439383}
   m_Layer: 0
   m_Name: AlienUmbrax
-  m_TagString: Untagged
+  m_TagString: AlienUmbrax
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

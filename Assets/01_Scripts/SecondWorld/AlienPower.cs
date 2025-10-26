@@ -20,7 +20,7 @@ public class AlienPower : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Instantiate(NextScene, transform.position, Quaternion.identity);
+            NextScene.SetActive(true);
         }
     }
 }

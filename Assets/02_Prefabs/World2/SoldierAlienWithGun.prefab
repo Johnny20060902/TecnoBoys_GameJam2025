@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 3
-  moveSpeed: 2
+  moveSpeed: 3.5
   stopDistance: 6
   shootInterval: 1.5
   bulletSpeed: 8

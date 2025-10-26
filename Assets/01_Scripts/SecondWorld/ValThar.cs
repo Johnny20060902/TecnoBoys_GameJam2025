@@ -29,7 +29,7 @@ public class ValThar : MonoBehaviour, ITakeDamage
     public bool isActive = false;
 
     public GameObject DialogueFinish;
-    public GameObject AlienPower;
+    public GameObject alienPower;
 
     void Start()
     {
@@ -139,7 +139,8 @@ public class ValThar : MonoBehaviour, ITakeDamage
         if (life <= 0)
         {
             Instantiate(DialogueFinish, transform.position, Quaternion.identity);
-            Instantiate(AlienPower, transform.position, Quaternion.identity);
+            alienPower.SetActive(true);
+            alienPower.transform.position = new Vector2(transform.position.x, transform.position.y);
             Destroy(gameObject);
         }
     }
