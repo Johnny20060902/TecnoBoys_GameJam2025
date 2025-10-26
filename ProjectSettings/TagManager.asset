@@ -3,21 +3,36 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Boss
+  - Enemy
+  - SoldierAlien
+  - PortalBlue
+  - 'PortalOrange '
+  - SoldierGunAlien
+  - SoldierStrongAlien
+  - Valthar
+  - 'XarKal '
+  - Cube
+  - Ground
+  - Mirror
+  - Button
+  - Glass
+  - PortalOrange
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Sword
+  - Player
+  - Enemy
+  - Cube
+  - Portal
+  - Mirror
+  - Button
   - 
   - 
   - 
