@@ -7,7 +7,9 @@ public enum WeaponTypeW2
 {
     Sword,
     Gun,
-    AlienGun
+    AlienGun,
+    Beam
+
 }
 
 public class Player : MonoBehaviour, ITakeDamage
@@ -57,6 +59,21 @@ public class Player : MonoBehaviour, ITakeDamage
     public float dashCooldown = 4f;        
     private bool canDash = true;
     private bool canDashWorld = false;
+
+
+    [Header("Beam Weapon")]
+    public bool hasBeamWeapon = false;
+    public LineRenderer beamRenderer;
+    public float beamDuration = 3f;
+    public float beamCooldown = 8f;
+    public float beamDamagePerSecond = 5f;
+    public float beamRange = 10f;
+    public LayerMask enemyLayer;
+    private bool canUseBeam = true;
+    private bool isFiringBeam = false;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -134,17 +151,85 @@ public class Player : MonoBehaviour, ITakeDamage
             currentWeapon = WeaponTypeW2.AlienGun;
             UpdateWeaponVisibility();
         }
+        if (Input.GetKeyDown(KeyCode.Alpha4) && hasBeamWeapon)
+        {
+            currentWeapon = WeaponTypeW2.Beam;
+            UpdateWeaponVisibility();
+        }
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && canDashWorld)
         {
             StartCoroutine(Dash());
         }
 
+        if (currentWeapon == WeaponTypeW2.Beam)
+            UseBeamWeapon();
+
         Move();
         RotateSword(); 
         CheckIfCanShoot();
         Attack();
         Jump();
+    }
+
+    void UseBeamWeapon()
+    {
+        if (!hasBeamWeapon || !canUseBeam || isFiringBeam) return;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            StartCoroutine(FireBeam());
+        }
+    }
+
+    IEnumerator FireBeam()
+    {
+        canUseBeam = false;
+        isFiringBeam = true;
+        beamRenderer.enabled = true;
+
+        float elapsed = 0f;
+
+        while (elapsed < beamDuration)
+        {
+            UpdateBeam();
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        beamRenderer.SetPosition(0, Vector2.zero);
+        beamRenderer.SetPosition(1, Vector2.zero);
+        beamRenderer.enabled = false;
+
+        isFiringBeam = false;
+
+        yield return new WaitForSeconds(beamCooldown);
+        canUseBeam = true;
+    }
+
+    void UpdateBeam()
+    {
+        if (beamRenderer == null || FirePoint == null) return;
+
+        Vector2 start = FirePoint.position;
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 dir = (mousePos - start).normalized;
+
+        RaycastHit2D hit = Physics2D.Raycast(start, dir, beamRange, enemyLayer);
+        Vector2 end = start + dir * beamRange;
+
+        if (hit.collider != null)
+        {
+            end = hit.point;
+            ITakeDamage enemy = hit.collider.GetComponent<ITakeDamage>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(beamDamagePerSecond * Time.deltaTime);
+            }
+        }
+
+        beamRenderer.SetPosition(0, start);
+        beamRenderer.SetPosition(1, end);
     }
 
     IEnumerator Dash()
@@ -182,6 +267,9 @@ public class Player : MonoBehaviour, ITakeDamage
 
         if (alienGunObject != null)
             alienGunObject.SetActive(currentWeapon == WeaponTypeW2.AlienGun);
+
+        if (beamRenderer != null)
+            beamRenderer.enabled = currentWeapon == WeaponTypeW2.Beam;
     }
 
 
