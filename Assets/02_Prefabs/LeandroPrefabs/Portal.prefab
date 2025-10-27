@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5676220028981637638}
   - component: {fileID: 523453982950988052}
   - component: {fileID: 2831084606746240734}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,9 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e098cf448eb48645afc787fbe7265be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Johnny_FirstWorldLevel2
+  totalLevels: 5
   screenFader: {fileID: 0}
-  message: "Nivel 2 \u2013 Pr\xF3ximamente"
+  transitionMessage: Cargando siguiente nivel...
 --- !u!61 &2831084606746240734
 BoxCollider2D:
   m_ObjectHideFlags: 0

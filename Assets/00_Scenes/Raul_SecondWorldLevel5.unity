@@ -2500,19 +2500,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3472828199096329102, guid: c4a51cb654620c64b90f012a915fb2c9, type: 3}
       propertyPath: dialogueLines.Array.data[0].text
-      value: Esta es una zona restringida no puede pasar
+      value: No debiste seguirme hasta aqui
       objectReference: {fileID: 0}
     - target: {fileID: 3472828199096329102, guid: c4a51cb654620c64b90f012a915fb2c9, type: 3}
       propertyPath: dialogueLines.Array.data[1].text
-      value: "Espera... Eres el de la ciudad \xA1Atrapenlo!"
+      value: Ya llame refuerzos asi que caeras sea como sea
       objectReference: {fileID: 0}
     - target: {fileID: 3472828199096329102, guid: c4a51cb654620c64b90f012a915fb2c9, type: 3}
       propertyPath: dialogueLines.Array.data[0].characterName
-      value: "Soldado de Xar\u2019Kal 1"
+      value: "Val\u2019Thar"
       objectReference: {fileID: 0}
     - target: {fileID: 3472828199096329102, guid: c4a51cb654620c64b90f012a915fb2c9, type: 3}
       propertyPath: dialogueLines.Array.data[1].characterName
-      value: "Soldado de Xar\u2019Kal 2"
+      value: "Val\u2019Thar"
       objectReference: {fileID: 0}
     - target: {fileID: 6267332262076801981, guid: c4a51cb654620c64b90f012a915fb2c9, type: 3}
       propertyPath: m_Name

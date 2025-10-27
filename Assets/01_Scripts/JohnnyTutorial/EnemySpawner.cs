@@ -3,7 +3,6 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Prefabs de enemigos")]
-    public GameObject meleeEnemyPrefab;
     public GameObject shooterEnemyPrefab;
 
     [Header("Configuración de spawn")]
@@ -23,26 +22,22 @@ public class EnemySpawner : MonoBehaviour
     {
         if (Time.time > nextSpawn && currentEnemies < maxEnemies)
         {
-            SpawnRandomEnemy();
+            SpawnShooterEnemy(); // 🔹 ahora solo genera Shooters
             nextSpawn = Time.time + spawnRate;
         }
     }
 
-    void SpawnRandomEnemy()
+    void SpawnShooterEnemy()
     {
-        // 🔹 Elegir tipo de enemigo: 0 = melee, 1 = shooter
-        int type = Random.Range(0, 2);
-        GameObject prefab = (type == 0) ? meleeEnemyPrefab : shooterEnemyPrefab;
-
         // 🔹 Elegir lado (izquierda o derecha)
         float side = Random.value < 0.5f ? -1f : 1f;
         Vector3 spawnPos = transform.position + new Vector3(spawnRadius * side, 0f, 0f);
 
-        // 🔹 Instanciar enemigo
-        GameObject enemy = Instantiate(prefab, spawnPos, Quaternion.identity);
+        // 🔹 Instanciar enemigo shooter
+        GameObject enemy = Instantiate(shooterEnemyPrefab, spawnPos, Quaternion.identity);
         currentEnemies++;
 
-        // 🔹 Hacer que mire hacia el centro (o jugador si está)
+        // 🔹 Hacer que mire hacia el centro o hacia el jugador
         Transform player = GameObject.FindGameObjectWithTag("Player")?.transform;
         if (player != null)
         {
@@ -54,7 +49,6 @@ public class EnemySpawner : MonoBehaviour
         }
         else
         {
-            // si no hay jugador, simplemente mira hacia el centro del mapa
             Vector3 scale = enemy.transform.localScale;
             scale.x = Mathf.Abs(scale.x) * -side;
             enemy.transform.localScale = scale;
@@ -65,15 +59,12 @@ public class EnemySpawner : MonoBehaviour
         tracker.Init(this);
     }
 
-    // 🔹 Llamado por los enemigos al morir
     public void EnemyDied()
     {
         currentEnemies = Mathf.Max(0, currentEnemies - 1);
     }
 }
 
-
-// ===== Clase auxiliar =====
 public class EnemyTracker : MonoBehaviour
 {
     private EnemySpawner spawner;

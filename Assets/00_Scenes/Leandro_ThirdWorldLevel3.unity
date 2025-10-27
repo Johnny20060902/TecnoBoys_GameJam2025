@@ -501,7 +501,7 @@ Transform:
   m_GameObject: {fileID: 168014900}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.8, y: 4.5, z: -10}
+  m_LocalPosition: {x: -11, y: 8.9, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -519,7 +519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98cea5e71e2a8c442b09487ccf096d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 458037020}
   smooth: 5
   minBounds: {x: -100, y: -10}
   maxBounds: {x: 100, y: 10}
@@ -771,7 +771,7 @@ GameObject:
   - component: {fileID: 309883413}
   - component: {fileID: 309883412}
   - component: {fileID: 309883411}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: Square (18)
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -1295,6 +1295,11 @@ MonoBehaviour:
   jumpBuffer: 0.1
   jumpCutMultiplier: 0.5
   facing: 1
+--- !u!4 &458037020 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7320890290179355678, guid: 370483147ac41b9448ce1bab21e9125c, type: 3}
+  m_PrefabInstance: {fileID: 458037010}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &465143165 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6348259953320810586, guid: 0868aa68240868f4abfb7d7db79a3fa6, type: 3}
