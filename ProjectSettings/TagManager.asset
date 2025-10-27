@@ -13,6 +13,14 @@ TagManager:
   - SoldierStrongAlien
   - Valthar
   - 'XarKal '
+  - Wall
+  - AlienUmbrax
+  - Ground
+  - Button
+  - Mirror
+  - Cube
+  - Glass
+  - PortalOrange
   layers:
   - Default
   - TransparentFX
@@ -23,8 +31,8 @@ TagManager:
   - Sword
   - Player
   - Enemy
-  - 
-  - 
+  - Portal
+  - Button
   - 
   - 
   - 

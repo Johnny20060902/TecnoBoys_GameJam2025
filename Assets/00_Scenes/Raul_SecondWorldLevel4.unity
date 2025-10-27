@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 2099174}
   m_Layer: 0
   m_Name: House9
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -472,7 +472,7 @@ GameObject:
   - component: {fileID: 263582407}
   m_Layer: 0
   m_Name: House11
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -638,7 +638,7 @@ GameObject:
   - component: {fileID: 450470164}
   m_Layer: 0
   m_Name: House5
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -768,7 +768,7 @@ GameObject:
   - component: {fileID: 461870278}
   m_Layer: 0
   m_Name: WallLeft (5)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1256,7 +1256,7 @@ GameObject:
   - component: {fileID: 723386740}
   m_Layer: 0
   m_Name: House4
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1386,7 +1386,7 @@ GameObject:
   - component: {fileID: 732915477}
   m_Layer: 0
   m_Name: House
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1746,7 +1746,7 @@ GameObject:
   - component: {fileID: 916039766}
   m_Layer: 0
   m_Name: House2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1881,7 +1881,7 @@ GameObject:
   - component: {fileID: 943129640}
   m_Layer: 0
   m_Name: House10
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2011,7 +2011,7 @@ GameObject:
   - component: {fileID: 990065164}
   m_Layer: 0
   m_Name: WallBottom
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2172,7 +2172,7 @@ GameObject:
   - component: {fileID: 1043383296}
   m_Layer: 0
   m_Name: WallTop
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2313,7 +2313,7 @@ GameObject:
   - component: {fileID: 1076098616}
   m_Layer: 0
   m_Name: WallRight (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2781,7 +2781,7 @@ GameObject:
   - component: {fileID: 1316344511}
   m_Layer: 0
   m_Name: Shop
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3019,7 +3019,7 @@ GameObject:
   - component: {fileID: 1338622815}
   m_Layer: 0
   m_Name: House4 (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3149,7 +3149,7 @@ GameObject:
   - component: {fileID: 1357334325}
   m_Layer: 0
   m_Name: House8 (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3440,6 +3440,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 50
   moveSpeed: 3
+  stopDistance: 5
+  dashSpeed: 7
+  dashTime: 0.6
+  shootInterval: 2
+  bulletsPerBurst: 3
+  burstDelay: 0.2
+  fanBullets: 5
+  fanSpreadAngle: 45
+  bulletPrefab: {fileID: 0}
+  shootPoint: {fileID: 0}
+  isActive: 0
+  DialogueFinish: {fileID: 0}
+  alienPower: {fileID: 0}
 --- !u!114 &1406074385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3666,6 +3679,9 @@ MonoBehaviour:
   attackPoint: {fileID: 1953770090}
   swordObject: {fileID: 1447414208}
   alienGunObject: {fileID: 471790091}
+  dashSpeed: 15
+  dashTime: 0.2
+  dashCooldown: 4
 --- !u!50 &1540520699
 Rigidbody2D:
   serializedVersion: 4
@@ -3832,7 +3848,7 @@ GameObject:
   - component: {fileID: 1615702755}
   m_Layer: 0
   m_Name: House (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3962,7 +3978,7 @@ GameObject:
   - component: {fileID: 1637830310}
   m_Layer: 0
   m_Name: House1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4141,7 +4157,7 @@ GameObject:
   - component: {fileID: 1668565667}
   m_Layer: 0
   m_Name: WallRight (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4588,7 +4604,7 @@ GameObject:
   - component: {fileID: 1885643826}
   m_Layer: 0
   m_Name: House8
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4718,7 +4734,7 @@ GameObject:
   - component: {fileID: 1886554160}
   m_Layer: 0
   m_Name: House7
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4848,7 +4864,7 @@ GameObject:
   - component: {fileID: 1894629093}
   m_Layer: 0
   m_Name: House6
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
