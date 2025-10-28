@@ -37,11 +37,17 @@ public class XarKalFinalW2 : MonoBehaviour, ITakeDamage
     [Header("Estado")]
     public bool isActive = false;
 
+    [Header("UI")]
+    public HealthBarW2 healthBar;
+
     private enum AttackPattern { LaserBurst, MissileRain, RapidFire }
     private AttackPattern currentPattern;
 
     void Start()
     {
+        if (healthBar != null)
+            healthBar.SetMaxHealth(life);
+
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -217,6 +223,9 @@ public class XarKalFinalW2 : MonoBehaviour, ITakeDamage
         if (isDead) return;
 
         life -= dmg;
+
+        if (healthBar != null)
+            healthBar.SetHealth(life);
 
         if (damageParticlesPrefab != null)
             Instantiate(damageParticlesPrefab, transform.position, Quaternion.identity);
