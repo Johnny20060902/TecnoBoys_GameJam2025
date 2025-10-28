@@ -72,11 +72,16 @@ public class Player : MonoBehaviour, ITakeDamage
     private bool canUseBeam = true;
     private bool isFiringBeam = false;
 
+    [Header("UI")]
+    public HealthBarW2 healthBar;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        if (healthBar != null)
+            healthBar.SetMaxHealth(life);
+
         string scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         if (scene == "Raul_Introduction")
         {
@@ -453,6 +458,10 @@ public class Player : MonoBehaviour, ITakeDamage
     public void TakeDamage(float dmg)
     {
         life -= dmg;
+
+        if (healthBar != null)
+            healthBar.SetHealth(life);
+
         if (life <= 0)
         {
             Destroy(gameObject);

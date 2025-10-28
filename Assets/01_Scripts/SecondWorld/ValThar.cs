@@ -31,6 +31,9 @@ public class ValThar : MonoBehaviour, ITakeDamage
     public GameObject DialogueFinish;
     public GameObject alienPower;
 
+    [Header("UI")]
+    public HealthBarW2 healthBar;
+    public GameObject health;
     void Start()
     {
         string scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name; 
@@ -39,6 +42,8 @@ public class ValThar : MonoBehaviour, ITakeDamage
             rb = GetComponent<Rigidbody2D>();
             player = GameObject.FindGameObjectWithTag("Player")?.transform;
         }
+
+
 
     }
 
@@ -131,11 +136,21 @@ public class ValThar : MonoBehaviour, ITakeDamage
     public void EnableAttack(bool enable)
     {
         isActive = enable;
+
+        if (enable)
+        {
+            health.SetActive(true);
+            if (healthBar != null)
+                healthBar.SetMaxHealth(life);
+        }
     }
 
     public void TakeDamage(float dmg)
     {
         life -= dmg;
+        if (healthBar != null)
+            healthBar.SetHealth(life);
+
         if (life <= 0)
         {
             Instantiate(DialogueFinish, transform.position, Quaternion.identity);

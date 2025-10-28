@@ -36,9 +36,12 @@ public class AlienUmbrax : MonoBehaviour, ITakeDamage
     private float changeOffsetTime = 0.6f;
 
     private Player playerScript;
+
+
     void Start()
     {
         life = maxLife;
+
         rb = GetComponent<Rigidbody2D>();
 
         playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
@@ -187,8 +190,12 @@ public class AlienUmbrax : MonoBehaviour, ITakeDamage
     public void TakeDamage(float dmg)
     {
         life -= dmg;
+
+
         if (life <= 0)
             Destroy(gameObject);
+
+
 
         if (life <= 90)
         {
