@@ -51,6 +51,18 @@ public class ChangeSceneW2 : MonoBehaviour
             nextSceneName = "Raul_SecondWorldLevel6";
             StartCoroutine(TransitionScene());
         }
+        else if (collision.gameObject.CompareTag("Player") && scene == "Raul_SecondWorldLevel6")
+        {
+            messageText = "Sales a buscar a Xar’Kal";
+            nextSceneName = "Raul_SecondWorldFinalBattle";
+            StartCoroutine(TransitionScene());
+        }
+        else if (collision.gameObject.CompareTag("Player") && scene == "Raul_SecondWorldFinalBattle")
+        {
+            messageText = "Buscando Encuentras otra nave lista para poder salir de Xelyth Prime";
+            nextSceneName = "Leandro_ThirdWorldLevel1";
+            StartCoroutine(TransitionScene());
+        }
     }
 
     private IEnumerator TransitionScene()

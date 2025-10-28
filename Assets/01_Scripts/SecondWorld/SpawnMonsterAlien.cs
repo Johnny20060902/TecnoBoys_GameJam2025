@@ -18,6 +18,8 @@ public class SpawnMonsterAlien : MonoBehaviour
     private GameObject monster; 
     private AlienUmbrax monsterScript;
 
+    public GameObject DoorExit;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && !monsterSpawned)
@@ -36,6 +38,16 @@ public class SpawnMonsterAlien : MonoBehaviour
         if (enableAttack && monsterScript != null)
         {
             monsterScript.EnableAttack(true);
+        }
+
+        int enemiesLeft = GameObject.FindGameObjectsWithTag("AlienUmbrax").Length;
+        if (enemiesLeft == 0)
+        {
+            DoorExit.SetActive(true);
+        }
+        else
+        {
+            DoorExit.SetActive(false);
         }
     }
 

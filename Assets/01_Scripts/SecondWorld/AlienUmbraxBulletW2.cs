@@ -5,7 +5,7 @@ using UnityEngine;
 public class AlienUmbraxBulletW2 : MonoBehaviour
 {
     public float lifetime = 3f;
-    public float damage = 1f;
+    public float damage = 3f;
 
     void Start()
     {
