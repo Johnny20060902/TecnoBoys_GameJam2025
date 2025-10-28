@@ -33,7 +33,7 @@ public class BulletPlayer : MonoBehaviour
             //}
         }
 
-        if (collision.gameObject.CompareTag("SoldierAlien") || collision.gameObject.CompareTag("SoldierGunAlien") || collision.gameObject.CompareTag("SoldierStrongAlien") || collision.gameObject.CompareTag("Valthar"))
+        if (collision.gameObject.CompareTag("SoldierAlien") || collision.gameObject.CompareTag("SoldierGunAlien") || collision.gameObject.CompareTag("SoldierStrongAlien") || collision.gameObject.CompareTag("Valthar") || collision.gameObject.CompareTag("AlienUmbrax") || collision.gameObject.CompareTag("ShipXarkal"))
         {
             Destroy(gameObject);
             //Instantiate(explosion, transform.position, transform.rotation);

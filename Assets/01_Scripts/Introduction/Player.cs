@@ -67,7 +67,7 @@ public class Player : MonoBehaviour, ITakeDamage
     public float beamDuration = 3f;
     public float beamCooldown = 8f;
     public float beamDamagePerSecond = 5f;
-    public float beamRange = 10f;
+    public float beamRange = 15f;
     public LayerMask enemyLayer;
     private bool canUseBeam = true;
     private bool isFiringBeam = false;
@@ -126,6 +126,15 @@ public class Player : MonoBehaviour, ITakeDamage
             canJump = false;
             hasAlienGun = true;
             canDashWorld = true;
+        }
+        else if (scene == "Raul_SecondWorldFinalBattle")
+        {
+            styleMoveY = true;
+            canShootWorld = true;
+            canJump = false;
+            hasAlienGun = true;
+            canDashWorld = true;
+            hasBeamWeapon = true;
         }
         UpdateWeaponVisibility();
     }

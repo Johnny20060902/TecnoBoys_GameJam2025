@@ -21,6 +21,7 @@ TagManager:
   - Cube
   - Glass
   - PortalOrange
+  - ShipXarkal
   layers:
   - Default
   - TransparentFX
