@@ -1,0 +1,2424 @@
+fileFormatVersion: 2
+guid: 935470b2cd5424e57b818c03978a256b
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Nature2_0
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 909
+        width: 67
+        height: 46
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12d92c1b0901c47d3bdd02a8760bb8f3
+      internalID: 479081413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_1
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 910
+        width: 78
+        height: 67
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcfa1149b4649467aa6752284ab955bf
+      internalID: 865282548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_2
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 910
+        width: 76
+        height: 59
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 999e92dd2ea5f4a0db55d31290e797bc
+      internalID: 857928071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_3
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 910
+        width: 83
+        height: 57
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97852cdd5831f4f8792ad005b486f5bc
+      internalID: 30262272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_4
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 910
+        width: 84
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a584970e4b5d4fa4aed59d9d8a5a7b1
+      internalID: 1161497628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_5
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 910
+        width: 75
+        height: 57
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bd22afc8d6fd4abd96b2cd276066d07
+      internalID: -826847405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_6
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 910
+        width: 69
+        height: 60
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5453601da5ebf494d8a0a0fc0167dcb8
+      internalID: 1408187770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_7
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 910
+        width: 82
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81a8a6ab6312b47a68f8bee8b4f17486
+      internalID: 2092587323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_8
+      rect:
+        serializedVersion: 2
+        x: 899
+        y: 910
+        width: 71
+        height: 60
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 134b85d6a34214301b4285a7dc7a65eb
+      internalID: -87254033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_9
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 832
+        width: 69
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8097c46aa794c4d3a8a9d1432ceab276
+      internalID: 2121369378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_10
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 832
+        width: 63
+        height: 52
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07c2018c117394222be237eb7cff344c
+      internalID: 256144084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_11
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 832
+        width: 83
+        height: 57
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45cf0b38b51164db08b2b107181ccb16
+      internalID: -383210890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_12
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 832
+        width: 76
+        height: 57
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 933e52993f2c64daaa198c6473741adb
+      internalID: 2037303187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_13
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 832
+        width: 72
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7686f2eb8868c412b8888bca4cf4175d
+      internalID: -588326360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_14
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 832
+        width: 67
+        height: 60
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3303bf436ff8e48f8957f0971e7ef2df
+      internalID: -1889829488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_15
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 832
+        width: 93
+        height: 60
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd14773b77e6a4dc49b7514fdc086601
+      internalID: 1607597153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_16
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 832
+        width: 79
+        height: 60
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0faf61a10d3534c558c621bfad24c849
+      internalID: 497140219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_17
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 832
+        width: 64
+        height: 57
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4588b75b2ab5741ad86492c45fb7a92e
+      internalID: 698206898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_18
+      rect:
+        serializedVersion: 2
+        x: 884
+        y: 832
+        width: 85
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c402eee9b9e894e0e9dc0760830d46cf
+      internalID: 1028464249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_19
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 756
+        width: 48
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b08f901ddefe14539877715bbacec4db
+      internalID: 1819491196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_20
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 756
+        width: 39
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9440a21cc4d774c6a9bcc6a6a2a2ee58
+      internalID: 497963929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_21
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 756
+        width: 47
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5350996b43ba3475d90d2058c5c845d7
+      internalID: 45080048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_22
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 754
+        width: 68
+        height: 60
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81c175670e40e44bbbdd4e418380d4ad
+      internalID: -315422241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_23
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 757
+        width: 63
+        height: 53
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9795380f0062846af8e5170f7e8d97ee
+      internalID: -1933485711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_24
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 757
+        width: 63
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c5d94309ea094201a3ba65e35f8d6d3
+      internalID: 1458371706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_25
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 756
+        width: 65
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 052b761247e204cbabb0651b76124be1
+      internalID: -1980681039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_26
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 756
+        width: 47
+        height: 43
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 846af802b2d164b098d0dd24aa95c23f
+      internalID: 1069122172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_27
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 757
+        width: 52
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56ed3cb6775d04369aa04ef812e5748b
+      internalID: 234683050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_28
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 757
+        width: 55
+        height: 43
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f0148e2dc3624d68b68c1a609bb46e0
+      internalID: 2011392627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_29
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 756
+        width: 49
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d9bc765a190b4db3b7ee7582a53f824
+      internalID: 1333326446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_30
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 756
+        width: 55
+        height: 53
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8566eb1c4ed1a4b9f8b3650acea55b9e
+      internalID: 1149051499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_31
+      rect:
+        serializedVersion: 2
+        x: 897
+        y: 756
+        width: 24
+        height: 27
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03abc7605605f46b5ae6d6c2ea0f9fb9
+      internalID: 609282570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_32
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 756
+        width: 41
+        height: 44
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59f77719e2adf41a8a7f91a4400ea865
+      internalID: 1541416923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_33
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 681
+        width: 68
+        height: 55
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9d6b4c7a21104f0ca3a3f7ca03eb85a
+      internalID: -1358092075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_34
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 681
+        width: 68
+        height: 55
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05b70cef60fc143d188fada581629b5a
+      internalID: -2108720501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_35
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 682
+        width: 68
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 612b14f505dae4932bc8a67a3ae84121
+      internalID: -993013545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_36
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 682
+        width: 74
+        height: 49
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afcfbea5cb5c448fa80299ef7b0f21d3
+      internalID: -2136254277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_37
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 700
+        width: 6
+        height: 9
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fa156c85edf94c74beaa42726d0727e
+      internalID: -1394983667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_38
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 683
+        width: 87
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1d8f7fa576624055a3b3fafa1aacbfb
+      internalID: 2121038741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_39
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 681
+        width: 43
+        height: 53
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 638ed5a10b4644d9f941b8f53b674758
+      internalID: -1035936474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_40
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 681
+        width: 42
+        height: 53
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd9044338864a4683ac654711383c7c2
+      internalID: 1866330615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_41
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 681
+        width: 32
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4596546c72174ad49045e80d767124c
+      internalID: -1307819273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_42
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 681
+        width: 45
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 140ce30adee2c47b694b4f977c6baf17
+      internalID: 1546950777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_43
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 610
+        width: 42
+        height: 47
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88b41ff27929348a589201a8647d8e9e
+      internalID: 1248876472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_44
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 611
+        width: 42
+        height: 46
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2465be35770cf444fbe7f22cfbf04b21
+      internalID: 1184472641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_45
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 610
+        width: 41
+        height: 47
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f5cc1820bc48479680e685fbf51c4a3
+      internalID: -1295064371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_46
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 611
+        width: 61
+        height: 50
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b43e5067543f488095e8e79c516dc9e
+      internalID: 1411275101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_47
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 608
+        width: 75
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55910ed5ef7c0478bad46dbffd9ff54b
+      internalID: 1318061175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_48
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 609
+        width: 68
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e381f9ff559cc47c881ac0f287aee74e
+      internalID: -2114550357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_49
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 601
+        width: 72
+        height: 65
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50b6a8a66807243879e18a3caf2ee192
+      internalID: 505704934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_50
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 600
+        width: 32
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b97d211288ac64c34bb0855c3638335d
+      internalID: 557254064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_51
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 600
+        width: 61
+        height: 65
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c92b4ad9800d40d9886ca3c81fdd35f
+      internalID: 2103952321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_52
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 600
+        width: 75
+        height: 62
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9d88d5510097478ab6e37e53e931ff1
+      internalID: 477338031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_53
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 599
+        width: 59
+        height: 55
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d515bff997b574ec4a3a3d662d17a178
+      internalID: -759543226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_54
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 599
+        width: 64
+        height: 71
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5227a832e03e54f6688d51e6bc251ae1
+      internalID: 787321130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_55
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 534
+        width: 110
+        height: 52
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b84622655c61443fa28c546ac6c2711
+      internalID: -1003925878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_56
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 534
+        width: 116
+        height: 52
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42066ec3291ca418984cf84ea93a929c
+      internalID: 377217857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_57
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 534
+        width: 81
+        height: 51
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e48f770561cd848ef90dca983306a998
+      internalID: -16767424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_58
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 534
+        width: 116
+        height: 51
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0aa21c48dfe341779c3ff9faef79a5a
+      internalID: -275157205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_59
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 534
+        width: 45
+        height: 47
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec2c53797fed746a29afa51e71ad8a72
+      internalID: -292429436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_60
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 532
+        width: 34
+        height: 52
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bcedba2efba34ed59d1986c44898018
+      internalID: 878897542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_61
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 533
+        width: 22
+        height: 52
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e650561fd5d0b4510ab2bd8fba0ed116
+      internalID: -178293880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_62
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 532
+        width: 23
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87668e23ef1d14be181dda22fc2f973c
+      internalID: -1045204436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_63
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 531
+        width: 38
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 424d0c1e1471447a19fd286ceb74a0ef
+      internalID: 1284478270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_64
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 532
+        width: 53
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55b38520093434d668f7f806b6af42b7
+      internalID: -1566011356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_65
+      rect:
+        serializedVersion: 2
+        x: 862
+        y: 531
+        width: 51
+        height: 55
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3270ed749acea41e594c88530547dfeb
+      internalID: -980683401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_66
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 531
+        width: 43
+        height: 43
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b136a9480622342bf90f242ca78a5f92
+      internalID: 576433350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_67
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 457
+        width: 82
+        height: 51
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91e28683c83b540f68fecbbc4c3baba1
+      internalID: 1813956435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_68
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 457
+        width: 76
+        height: 51
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 477fc96ba64f749a896be153ef616424
+      internalID: -2047212760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_69
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 457
+        width: 57
+        height: 51
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78dfdd280cea14ec39a86777e122ec0a
+      internalID: -1850953662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_70
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 457
+        width: 75
+        height: 43
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 702aa7c4875d84d63aa243fad9c53ab2
+      internalID: -585879927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_71
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 456
+        width: 22
+        height: 52
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adf54bb389a344bc49a55be9f18c3023
+      internalID: 1330526081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_72
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 462
+        width: 44
+        height: 46
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f4cc0830bb1f42359aa16a958f86b5e
+      internalID: 1795182076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_73
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 376
+        width: 48
+        height: 55
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33cb3ab7a292542d88db2ff0a785606c
+      internalID: -1792085209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_74
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 376
+        width: 48
+        height: 39
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12b05edef97754ece9b1f58a07b4849e
+      internalID: 869785844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_75
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 376
+        width: 48
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e396e4c023324712b54c41283f927f9
+      internalID: 757223590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_76
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 376
+        width: 64
+        height: 46
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64d7ebaebc9f2420daff4affc13a316a
+      internalID: -1796615776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_77
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 377
+        width: 41
+        height: 55
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33481929efb2d414aa5659411a740587
+      internalID: 1184090322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_78
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 376
+        width: 62
+        height: 43
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e0c02b9a549944d38b4b0f33b011b9b
+      internalID: 871835583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_79
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 377
+        width: 67
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14ecdd42fc17b4133a54eca31bcd7793
+      internalID: -331844268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_80
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 376
+        width: 70
+        height: 46
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8311ea2127f1f41b5aa10b7ae8a5c9cb
+      internalID: 286971221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_81
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 296
+        width: 45
+        height: 58
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40fd759fffa3b4b41a8301062adb14d0
+      internalID: -2002652620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_82
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 296
+        width: 38
+        height: 57
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b8065e43ac424533b80ca3b47a5be5f
+      internalID: 181738315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_83
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 295
+        width: 38
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e4b5d62dc05c4b85b00b55d9a99d596
+      internalID: 972601421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_84
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 296
+        width: 41
+        height: 59
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d30c3fdbea7684cbb92fb3b09382c8ae
+      internalID: 1733329577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_85
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 296
+        width: 41
+        height: 53
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87ba16fa11de94d19b01a8a33b1d051c
+      internalID: 2093335407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_86
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 296
+        width: 38
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4b4973cb5a3941dfad15b7eb55bbd0a
+      internalID: 1143785973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_87
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 296
+        width: 38
+        height: 59
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af144199872bd46a88fc82896e8abea9
+      internalID: -1579143772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_88
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 294
+        width: 37
+        height: 47
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e74e1698257345c2aced0e523c30241
+      internalID: 212209013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_89
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 296
+        width: 35
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97c18813e1c564778bf05076f62845c3
+      internalID: 1413190516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_90
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 294
+        width: 47
+        height: 55
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98ddc91a786aa4b75b89bdc2277536ee
+      internalID: -2101254655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_91
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 300
+        width: 61
+        height: 49
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 773f0063358b34ecc9f278a67c394b62
+      internalID: -1112978733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_92
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 297
+        width: 75
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5cda0a0c62b24da8a0e3db53bd19b01
+      internalID: -1056920527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_93
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 294
+        width: 67
+        height: 52
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b2560e2e81a24a0e9be49be849b708c
+      internalID: 1620366721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_94
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 294
+        width: 54
+        height: 55
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69a497cd350d64a17a84cf47cc368a2b
+      internalID: -251883462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_95
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 215
+        width: 61
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13fba90c558e141b4a404bba28b90823
+      internalID: 70068670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_96
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 213
+        width: 58
+        height: 65
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ffd74744e33a43d796e6dc8888e9412
+      internalID: 248593160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_97
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 214
+        width: 59
+        height: 63
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 505ec2f9e866f4ade85644f47b38ae5c
+      internalID: -1537005922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_98
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 213
+        width: 67
+        height: 68
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c556106649340439dbeb6db47d6e1544
+      internalID: -1859453322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_99
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 213
+        width: 49
+        height: 61
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 567623f03fed144f1afe5433a45b5fb5
+      internalID: -401800251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_100
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 213
+        width: 25
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4dfd81d954a048daaea5244d96f5b64
+      internalID: 1195254927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_101
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 213
+        width: 68
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f196440817fb4298b6b1acd4419cdb7
+      internalID: -540712377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_102
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 212
+        width: 49
+        height: 56
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6aea7eeaa7c8436f846ed4dd8fd8d43
+      internalID: 1316705087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_103
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 212
+        width: 50
+        height: 60
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b6f7e19a7c454b60b8363b316ec1659
+      internalID: -51768794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nature2_104
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 212
+        width: 58
+        height: 59
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 546452e7eb7f84a0fb61fb2065a664fd
+      internalID: -21402806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Nature2_0: 479081413
+      Nature2_1: 865282548
+      Nature2_10: 256144084
+      Nature2_100: 1195254927
+      Nature2_101: -540712377
+      Nature2_102: 1316705087
+      Nature2_103: -51768794
+      Nature2_104: -21402806
+      Nature2_11: -383210890
+      Nature2_12: 2037303187
+      Nature2_13: -588326360
+      Nature2_14: -1889829488
+      Nature2_15: 1607597153
+      Nature2_16: 497140219
+      Nature2_17: 698206898
+      Nature2_18: 1028464249
+      Nature2_19: 1819491196
+      Nature2_2: 857928071
+      Nature2_20: 497963929
+      Nature2_21: 45080048
+      Nature2_22: -315422241
+      Nature2_23: -1933485711
+      Nature2_24: 1458371706
+      Nature2_25: -1980681039
+      Nature2_26: 1069122172
+      Nature2_27: 234683050
+      Nature2_28: 2011392627
+      Nature2_29: 1333326446
+      Nature2_3: 30262272
+      Nature2_30: 1149051499
+      Nature2_31: 609282570
+      Nature2_32: 1541416923
+      Nature2_33: -1358092075
+      Nature2_34: -2108720501
+      Nature2_35: -993013545
+      Nature2_36: -2136254277
+      Nature2_37: -1394983667
+      Nature2_38: 2121038741
+      Nature2_39: -1035936474
+      Nature2_4: 1161497628
+      Nature2_40: 1866330615
+      Nature2_41: -1307819273
+      Nature2_42: 1546950777
+      Nature2_43: 1248876472
+      Nature2_44: 1184472641
+      Nature2_45: -1295064371
+      Nature2_46: 1411275101
+      Nature2_47: 1318061175
+      Nature2_48: -2114550357
+      Nature2_49: 505704934
+      Nature2_5: -826847405
+      Nature2_50: 557254064
+      Nature2_51: 2103952321
+      Nature2_52: 477338031
+      Nature2_53: -759543226
+      Nature2_54: 787321130
+      Nature2_55: -1003925878
+      Nature2_56: 377217857
+      Nature2_57: -16767424
+      Nature2_58: -275157205
+      Nature2_59: -292429436
+      Nature2_6: 1408187770
+      Nature2_60: 878897542
+      Nature2_61: -178293880
+      Nature2_62: -1045204436
+      Nature2_63: 1284478270
+      Nature2_64: -1566011356
+      Nature2_65: -980683401
+      Nature2_66: 576433350
+      Nature2_67: 1813956435
+      Nature2_68: -2047212760
+      Nature2_69: -1850953662
+      Nature2_7: 2092587323
+      Nature2_70: -585879927
+      Nature2_71: 1330526081
+      Nature2_72: 1795182076
+      Nature2_73: -1792085209
+      Nature2_74: 869785844
+      Nature2_75: 757223590
+      Nature2_76: -1796615776
+      Nature2_77: 1184090322
+      Nature2_78: 871835583
+      Nature2_79: -331844268
+      Nature2_8: -87254033
+      Nature2_80: 286971221
+      Nature2_81: -2002652620
+      Nature2_82: 181738315
+      Nature2_83: 972601421
+      Nature2_84: 1733329577
+      Nature2_85: 2093335407
+      Nature2_86: 1143785973
+      Nature2_87: -1579143772
+      Nature2_88: 212209013
+      Nature2_89: 1413190516
+      Nature2_9: 2121369378
+      Nature2_90: -2101254655
+      Nature2_91: -1112978733
+      Nature2_92: -1056920527
+      Nature2_93: 1620366721
+      Nature2_94: -251883462
+      Nature2_95: 70068670
+      Nature2_96: 248593160
+      Nature2_97: -1537005922
+      Nature2_98: -1859453322
+      Nature2_99: -401800251
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

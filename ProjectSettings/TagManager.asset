@@ -3,22 +3,43 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Boss
+  - Enemy
+  - SoldierAlien
+  - PortalBlue
+  - 'PortalOrange '
+  - SoldierGunAlien
+  - SoldierStrongAlien
+  - Valthar
+  - 'XarKal '
+  - Wall
+  - AlienUmbrax
+  - Ground
+  - Button
+  - Mirror
+  - Cube
+  - Glass
+  - PortalOrange
+  - ShipXarkal
+  - Core
+  - EnemyBullet
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Sword
+  - Player
+  - Enemy
+  - Portal
+  - Button
+  - Cube
+  - PortalRay
+  - 'PortalTransparent '
   - 
   - 
   - 
@@ -38,6 +59,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 343168275
+    locked: 0
+  - name: Background Detail
+    uniqueID: 2487751067
+    locked: 0
+  - name: Ground
+    uniqueID: 2207234197
+    locked: 0
+  - name: Ground Decoration
+    uniqueID: 2275946753
+    locked: 0
+  - name: Player
+    uniqueID: 1574998127
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
