@@ -2800,19 +2800,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 553631039245730585, guid: 370483147ac41b9448ce1bab21e9125c, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1922677589488886160, guid: 370483147ac41b9448ce1bab21e9125c, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2454573144940447793, guid: 370483147ac41b9448ce1bab21e9125c, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2840123650386503099, guid: 370483147ac41b9448ce1bab21e9125c, type: 3}
+      propertyPath: m_Name
+      value: PistolInHand
       objectReference: {fileID: 0}
     - target: {fileID: 6910877046049239424, guid: 370483147ac41b9448ce1bab21e9125c, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7320890290179355678, guid: 370483147ac41b9448ce1bab21e9125c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2856,37 +2860,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7514149043501707655, guid: 370483147ac41b9448ce1bab21e9125c, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 553631039245730585, guid: 370483147ac41b9448ce1bab21e9125c, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 2754795686233620692}
-    - targetCorrespondingSourceObject: {fileID: 553631039245730585, guid: 370483147ac41b9448ce1bab21e9125c, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 2754795686233620691}
-    - targetCorrespondingSourceObject: {fileID: 553631039245730585, guid: 370483147ac41b9448ce1bab21e9125c, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 2754795686233620690}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 370483147ac41b9448ce1bab21e9125c, type: 3}
---- !u!1 &1130129527 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 553631039245730585, guid: 370483147ac41b9448ce1bab21e9125c, type: 3}
-  m_PrefabInstance: {fileID: 1130129526}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1130129528 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5611804018937229453, guid: 370483147ac41b9448ce1bab21e9125c, type: 3}
-  m_PrefabInstance: {fileID: 1130129526}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1130129529 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4063965816874109426, guid: 370483147ac41b9448ce1bab21e9125c, type: 3}
-  m_PrefabInstance: {fileID: 1130129526}
-  m_PrefabAsset: {fileID: 0}
 --- !u!61 &1135221985
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5243,69 +5223,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7320890290179355678, guid: 370483147ac41b9448ce1bab21e9125c, type: 3}
   m_PrefabInstance: {fileID: 1130129526}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2754795686233620690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1130129527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bb232281e963d24ba967e48ffb771fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grabDistance: 3
-  moveSpeed: 12
-  holdDistance: 1.5
-  cubeMask:
-    serializedVersion: 2
-    m_Bits: 64
---- !u!114 &2754795686233620691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1130129527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49d22b47dd3235a4a8c64c0f7dd50285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 8
-  jumpForce: 12
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 8
-  groundCheck: {fileID: 1130129528}
-  groundCheckSize: {x: 0.9, y: 0.1}
-  portalControlLock: 0.25
-  coyoteTime: 0.08
-  jumpBuffer: 0.1
-  jumpCutMultiplier: 0.5
-  facing: 1
---- !u!114 &2754795686233620692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1130129527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aa62d250e1071044a25cc67ed8e03f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePoint: {fileID: 1130129529}
-  portalBluePrefab: {fileID: 7424896411313653837, guid: ba72132455b65c64cb4091b7d72c2fbf, type: 3}
-  portalOrangePrefab: {fileID: 8106440779971410715, guid: 84e9e3cf7770b9c4cab7d2e6a1d9f1aa, type: 3}
-  shootMask:
-    serializedVersion: 2
-    m_Bits: 8
-  maxDistance: 25
-  surfaceOffset: 0.05
-  minPortalSpacing: 0.2
 --- !u!1 &6348259953386301199 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6348259953320810586, guid: ae411ea2923e68848b46a1eabf8eac51, type: 3}

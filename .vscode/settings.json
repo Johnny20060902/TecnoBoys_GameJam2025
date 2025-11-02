@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "TecnoBoys_GameJam2025-dev.sln"
+    "dotnet.defaultSolution": "TecnoBoys_GameJam2025.sln"
 }
