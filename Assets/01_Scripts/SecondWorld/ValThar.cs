@@ -62,7 +62,7 @@ public class ValThar : MonoBehaviour, ITakeDamage
             rb.velocity = Vector2.zero;
             Vector2 direction = (player.position - transform.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, angle - 90f);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
 
             if (canShoot)
                 StartCoroutine(ShootFanBurst());

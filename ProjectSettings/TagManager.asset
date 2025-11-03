@@ -22,6 +22,8 @@ TagManager:
   - Glass
   - PortalOrange
   - ShipXarkal
+  - PlayerBullet
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

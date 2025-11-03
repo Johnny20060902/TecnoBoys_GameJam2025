@@ -19,5 +19,11 @@ public class HealthBarW2 : MonoBehaviour
     {
         fillImage.fillAmount = currentHealth / maxHealth;
         TextHealth.text = currentHealth.ToString();
+
+        if (currentHealth <= 0)
+        {
+            gameObject.SetActive(false);
+        }
+
     }
 }

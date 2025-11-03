@@ -75,6 +75,8 @@ public class Player : MonoBehaviour, ITakeDamage
     [Header("UI")]
     public HealthBarW2 healthBar;
 
+    public GameObject deathPanel;
+
 
     // Start is called before the first frame update
     void Start()
@@ -464,6 +466,8 @@ public class Player : MonoBehaviour, ITakeDamage
 
         if (life <= 0)
         {
+            if (deathPanel != null)
+                deathPanel.SetActive(true);
             Destroy(gameObject);
         }
     }

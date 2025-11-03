@@ -5,86 +5,90 @@ using UnityEngine;
 public class PortalGun : MonoBehaviour
 {
     [Header("Referencias")]
-    public Transform firePoint;                 // Punto de origen del disparo (mano del jugador)
-    public GameObject portalBluePrefab;         // Prefab del portal azul
-    public GameObject portalOrangePrefab;       // Prefab del portal naranja
-    public LayerMask shootMask;                 // Capas válidas para colocar portales (Ground, Wall, etc.)
+    public Transform firePoint;                 
+    public GameObject portalBluePrefab;         
+    public GameObject portalOrangePrefab;       
+    public LayerMask shootMask;                 
 
     [Header("Configuración")]
-    public float maxDistance = 25f;             // Distancia máxima del disparo
-    public float surfaceOffset = 0.05f;         // Separación del portal respecto a la superficie
-    public float minPortalSpacing = 0.2f;       // Margen mínimo para no colocar portales superpuestos
+    public float maxDistance = 25f;             
+    public float surfaceOffset = 0.05f;         
+    public float minPortalSpacing = 0.2f;       
 
     private GameObject portalBlue;
     private GameObject portalOrange;
+    private bool tienePistola = false;
+
+    // 🌍 Se mantiene entre escenas (memoria + guardado en disco)
+    public static bool pistolaObtenida = false;
+
+    // ==========================================================
+    void Awake()
+    {
+        // Restaurar desde PlayerPrefs si venimos de otra escena
+        if (PlayerPrefs.GetInt("TienePistola", 0) == 1)
+        {
+            pistolaObtenida = true;
+            tienePistola = true;
+
+            // Mostrar el modelo en la mano
+            Transform pistol = firePoint.Find("PistolInHand");
+            if (pistol != null)
+                pistol.gameObject.SetActive(true);
+        }
+    }
 
     void Update()
     {
-        // 🔹 Disparo del portal azul (clic izquierdo)
+        if (!tienePistola)
+            return; 
+
         if (Input.GetMouseButtonDown(0))
             ShootPortal(ref portalBlue, portalBluePrefab);
 
-        // 🔹 Disparo del portal naranja (clic derecho)
         if (Input.GetMouseButtonDown(1))
             ShootPortal(ref portalOrange, portalOrangePrefab);
     }
 
-    // ===========================================================
-    //  🔸 Disparo del portal (colocación precisa y orientación real)
-    // ===========================================================
+    public void ActivarPistola()
+    {
+        tienePistola = true;
+        pistolaObtenida = true;
+
+        // Guardar estado permanente
+        PlayerPrefs.SetInt("TienePistola", 1);
+        PlayerPrefs.Save();
+
+        // Mostrar visualmente
+        Transform pistol = firePoint.Find("PistolInHand");
+        if (pistol != null)
+            pistol.gameObject.SetActive(true);
+    }
+
+    // ==========================================================
     void ShootPortal(ref GameObject portalInstance, GameObject prefab)
     {
         if (firePoint == null) return;
 
-        // 🧭 Dirección hacia el cursor del mouse (en 2D)
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 dir = (mousePos - (Vector2)firePoint.position).normalized;
-
-        // 🔦 Lanza un raycast para detectar superficies válidas
         RaycastHit2D hit = Physics2D.Raycast(firePoint.position, dir, maxDistance, shootMask);
 
         if (hit.collider != null)
         {
-            // 🔹 Punto exacto del impacto
             Vector2 hitPoint = hit.point;
-
-            // 🔹 Normal de la superficie (dirección perpendicular)
             Vector2 surfaceNormal = hit.normal.normalized;
-
-            // 🔹 Evitar que se coloque sobre esquinas imposibles
             if (hit.collider.isTrigger) return;
 
-            // 🔹 Ajustar la posición del portal un poco fuera de la superficie
             Vector2 spawnPos = hitPoint + surfaceNormal * surfaceOffset;
-
-            // =====================================================
-            // 🔹 Cálculo exacto de rotación
-            // =====================================================
-            // Queremos que el portal "mire" hacia afuera de la superficie
             float angle = Mathf.Atan2(surfaceNormal.y, surfaceNormal.x) * Mathf.Rad2Deg;
-
-            // El sprite del portal debe mirar "hacia la normal"
-            // Si tu sprite está invertido (mira al revés), descomenta:
-            // angle += 180f;
-
             Quaternion rot = Quaternion.Euler(0f, 0f, angle);
 
-            // =====================================================
-            // 🔹 Crear o mover el portal
-            // =====================================================
             if (portalInstance == null)
-            {
                 portalInstance = Instantiate(prefab, spawnPos, rot);
-            }
             else
-            {
-                // Si ya existe, simplemente lo movemos
                 portalInstance.transform.SetPositionAndRotation(spawnPos, rot);
-            }
 
-            // =====================================================
-            // 🔗 Enlazar automáticamente ambos portales
-            // =====================================================
             if (portalBlue != null && portalOrange != null)
             {
                 var blue = portalBlue.GetComponent<Portal2D>();
@@ -97,21 +101,34 @@ public class PortalGun : MonoBehaviour
                 }
             }
 
-            // =====================================================
-            // 🔍 Debug visual
-            // =====================================================
             Debug.DrawRay(hitPoint, surfaceNormal * 0.5f, Color.green, 1f);
         }
         else
         {
-            // 🔴 Si no golpea nada, dibuja la línea del disparo en rojo
             Debug.DrawRay(firePoint.position, dir * maxDistance, Color.red, 0.3f);
         }
     }
 
-    // ===========================================================
-    //  🔹 GIZMOS (ayuda visual en el editor)
-    // ===========================================================
+    // ==========================================================
+    void LateUpdate()
+    {
+        if (!tienePistola || firePoint == null) return;
+
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPos.z = 0;
+
+        Vector3 dir = (mouseWorldPos - firePoint.position).normalized;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+        firePoint.rotation = Quaternion.Euler(0f, 0f, angle);
+
+        if (Mathf.Abs(angle) > 90)
+            firePoint.localScale = new Vector3(1, -1, 1);
+        else
+            firePoint.localScale = new Vector3(1, 1, 1);
+    }
+
+    // ==========================================================
     void OnDrawGizmos()
     {
         if (firePoint == null || Camera.main == null) return;
