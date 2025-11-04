@@ -4,7 +4,7 @@ public class BulletElarion : MonoBehaviour
 {
     public float speed = 12f;
     public float life = 3f;
-    public float damage = 5f;
+    public float damage = 6f;
 
     void Start()
     {

@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scene: 
-  screenFader: {fileID: 0}
+  screenFader: {fileID: 8166175603836541025, guid: e94a766004907374eadf631aeb231b11, type: 3}
   messageText: Sigues a Veyra hasta destingir una ciudad a lo lejos
   nextSceneName: Raul_SecondWorldLevel2
 --- !u!61 &2763405611974405231

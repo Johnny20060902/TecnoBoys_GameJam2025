@@ -41,8 +41,12 @@ public class DialogueSystem : MonoBehaviour
     public bool activateEnemies = false;
     public bool activateNextScene = false;
     public bool activateValthar = false;
+    public bool activateMonster = false;
+    public bool activateXarkal = false;
 
     public ValThar valthar;
+    public SpawnMonsterAlien monster;
+    public XarKalFinalW2 xarkal;
 
     public GameObject SceneNew;
 
@@ -79,7 +83,7 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
-    public void StartDialogue(DialogueLine[] dialogueLines, bool npcWalk = false, bool enemiesAttack = false, bool NextScene = false, bool valthar = false)
+    public void StartDialogue(DialogueLine[] dialogueLines, bool npcWalk = false, bool enemiesAttack = false, bool NextScene = false, bool valthar = false, bool monster= false, bool xarkal = false)
     {
         lines = dialogueLines;
         index = 0;
@@ -89,6 +93,8 @@ public class DialogueSystem : MonoBehaviour
         activateEnemies = enemiesAttack;
         activateNextScene = NextScene;
         activateValthar = valthar;
+        activateMonster = monster;
+        activateXarkal = xarkal;
 
         if (playerController != null) playerController.EnableMovement(false);
         if (boss != null) boss.EnableBoss(false);
@@ -160,6 +166,15 @@ public class DialogueSystem : MonoBehaviour
             valthar.EnableAttack(true);
         }
 
+        if (activateMonster)
+        {
+            monster.enableAttack = true;
+        }
+
+        if (activateXarkal)
+        {
+            xarkal.EnableAttack(true);
+        }
 
         if (activateNextScene && SceneNew != null)
         {

@@ -261,25 +261,39 @@ public class PlayerCombatJohnny : MonoBehaviour
             swordInHand.SetActive(hasSword && mode == 2);
     }
 
-    void ApplyHandPose()
+    public void ApplyHandPose()
     {
         if (swordInHand == null) return;
 
         int sign = (ctrl != null && ctrl.facing < 0) ? -1 : 1;
-        swordInHand.transform.localPosition = new Vector3(handOffsetX * sign, handOffsetY, swordBaseLocalPos.z);
 
-        Quaternion rotY = Quaternion.Euler(0f, (sign < 0 ? 180f : 0f), 0f);
-        Quaternion rotZ = Quaternion.Euler(0f, 0f, swordBaseZ);
-        swordInHand.transform.localRotation = rotY * rotZ;
+        // Posición: prioriza el firePoint (espejado), si no hay usa offsets
+        Vector3 targetLocalPos;
+        if (firePoint != null)
+        {
+            targetLocalPos = firePoint.localPosition;
+            targetLocalPos.x = Mathf.Abs(targetLocalPos.x) * sign;
+        }
+        else
+        {
+            targetLocalPos = new Vector3(handOffsetX * sign, handOffsetY, swordBaseLocalPos.z);
+        }
+        swordInHand.transform.localPosition = targetLocalPos;
+
+        // Rotación: espejo perfecto; conserva el Z base de la espada
+        swordInHand.transform.localRotation =
+            Quaternion.Euler(0f, (sign < 0 ? 180f : 0f), swordBaseZ);
+
+        // Escala original
         swordInHand.transform.localScale = swordBaseLocalScale;
 
+        // Alinear meleeOrigin al lado actual
         if (meleeOrigin != null)
         {
-            meleeOrigin.localPosition = new Vector3(
-                Mathf.Abs(meleeOrigin.localPosition.x) * sign,
-                meleeOrigin.localPosition.y,
-                meleeOrigin.localPosition.z
-            );
+            Vector3 m = meleeOrigin.localPosition;
+            m.x = Mathf.Abs(m.x) * sign;
+            meleeOrigin.localPosition = m;
         }
     }
+
 }

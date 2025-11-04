@@ -14,6 +14,8 @@ public class DialogueTrigger : MonoBehaviour
     public bool activateEnemiesAttack = false;
     public bool activateNextScene = false;
     public bool activateValtharAttack = false;
+    public bool activateMonster = false;
+    public bool activateXarkalAttack = false;
     private void Start()
     {
         dialogueSystem = FindObjectOfType<DialogueSystem>();
@@ -38,6 +40,6 @@ public class DialogueTrigger : MonoBehaviour
     public void StartDialogue()
     {
         if (dialogueSystem != null)
-            dialogueSystem.StartDialogue(dialogueLines, activateNpcWalk, activateEnemiesAttack, activateNextScene, activateValtharAttack);
+            dialogueSystem.StartDialogue(dialogueLines, activateNpcWalk, activateEnemiesAttack, activateNextScene, activateValtharAttack, activateMonster, activateXarkalAttack);
     }
 }

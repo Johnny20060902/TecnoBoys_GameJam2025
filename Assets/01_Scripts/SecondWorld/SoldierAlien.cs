@@ -50,7 +50,17 @@ public class SoldierAlien : MonoBehaviour, ITakeDamage
         isActive = enable;
     }
 
-
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            Player player = collision.GetComponent<Player>();
+            if (player != null)
+            {
+                player.TakeDamage(1f); 
+            }
+        }
+    }
     public void TakeDamage(float dmg)
     {
         life -= dmg;

@@ -44,9 +44,9 @@ GameObject:
   - component: {fileID: 8570727705137104271}
   - component: {fileID: 5132352190475910257}
   - component: {fileID: 2379440295632439383}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AlienUmbrax
-  m_TagString: Untagged
+  m_TagString: AlienUmbrax
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c635630a53bee5a49b95df3aa2ffa3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLife: 90
+  maxLife: 120
   moveSpeed: 4
   dashSpeed: 7
   dashTime: 0.3
@@ -141,7 +141,9 @@ MonoBehaviour:
   shootInterval: 2
   bulletsPerBurst: 3
   burstDelay: 0.2
-  player: {fileID: 0}
+  shockwaveRadius: 3
+  shockForce: 6
+  spriteRenderer: {fileID: 0}
   isActive: 0
 --- !u!61 &5132352190475910257
 BoxCollider2D:
