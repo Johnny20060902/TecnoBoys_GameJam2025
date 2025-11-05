@@ -16,35 +16,43 @@ public class HealthBar2D : MonoBehaviour
 
     void Start()
     {
-        if (target == null)
-            target = transform.parent;
-
-        if (target != null)
-            health = target.GetComponent<HealthSystem>();
-
-        if (fill != null)
-            fill.color = Color.green;
+        if (target == null) target = transform.parent;
+        if (target != null) health = target.GetComponent<HealthSystem>();
+        if (fill != null) fill.color = Color.green;
     }
 
     void LateUpdate()
     {
         if (target == null || fill == null || health == null) return;
 
-        // Posición siempre sobre el personaje
-        transform.position = target.position + worldOffset;
+        // 🔧 (1) Posicionar SIEMPRE por encima del sprite del boss (evita que se superponga)
+        //     Si no hay SpriteRenderer, usa la posición + worldOffset como antes.
+        Vector3 pos = target.position + worldOffset;
+        var sr = target.GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            float topY = sr.bounds.max.y;           // borde superior del sprite en mundo
+            pos = new Vector3(target.position.x, topY, target.position.z) + worldOffset;
+        }
+        transform.position = pos;
 
-        // Calcular porcentaje de vida
-        float pct = Mathf.Clamp01(health.currentHealth / health.maxHealth);
+        // 🔧 (2) Recalcular el porcentaje CADA FRAME (para que sí baje)
+        float max = Mathf.Max(1f, health.maxHealth);             // evita /0
+        float pct = Mathf.Clamp01(health.currentHealth / max);
 
-        // Escala del fill (manteniendo el centro a la izquierda)
+        // Escala del fill manteniendo el origen a la izquierda
         fill.transform.localScale = new Vector3(pct * width, fill.transform.localScale.y, 1f);
         float leftOffset = -(width - (pct * width)) * 0.5f;
         fill.transform.localPosition = new Vector3(leftOffset, 0, 0);
 
-        // Cambiar color dinámico según la vida
-        if (pct > 0.5f)
-            fill.color = Color.Lerp(Color.yellow, Color.green, (pct - 0.5f) * 2f);
-        else
-            fill.color = Color.Lerp(Color.red, Color.yellow, pct * 2f);
+        // Color dinámico
+        fill.color = (pct > 0.5f)
+            ? Color.Lerp(Color.yellow, Color.green, (pct - 0.5f) * 2f)
+            : Color.Lerp(Color.red, Color.yellow, pct * 2f);
+
+        // Ocultar si muere
+        bool visible = health.currentHealth > 0f;
+        if (bg != null) bg.enabled = visible;
+        fill.enabled = visible;
     }
 }

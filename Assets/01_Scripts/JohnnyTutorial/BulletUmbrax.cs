@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BulletUmbrax : MonoBehaviour
 {
@@ -7,24 +7,43 @@ public class BulletUmbrax : MonoBehaviour
     public float lifetime = 4f;
     public LayerMask hitMask;
 
-    Rigidbody2D rb;
-    SpriteRenderer sr;
-    float timer;
+    private Rigidbody2D rb;
+    private Transform homingTarget;   // 🔹 objetivo autodirigido (solo para el Boss)
+    private bool isHoming = false;
+    private float rotateSpeed = 200f; // 🔹 velocidad de giro al seguir al jugador
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
         if (rb != null) rb.gravityScale = 0;
-        if (sr != null) sr.color = new Color(0.05f, 0.05f, 0.05f, 1f);
-        timer = lifetime;
+        Destroy(gameObject, lifetime);
     }
 
     void Update()
     {
-        rb.velocity = transform.right * speed;
-        timer -= Time.deltaTime;
-        if (timer <= 0) Destroy(gameObject);
+        if (!isHoming)
+        {
+            // comportamiento normal (para disparos comunes)
+            rb.velocity = transform.right * speed;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (isHoming && homingTarget != null && rb != null)
+        {
+            // dirección hacia el jugador
+            Vector2 direction = ((Vector2)homingTarget.position - rb.position).normalized;
+            float rotateAmount = Vector3.Cross(direction, transform.right).z;
+            rb.angularVelocity = -rotateAmount * rotateSpeed;
+            rb.velocity = transform.right * speed;
+        }
+    }
+
+    public void SetHomingTarget(Transform target)
+    {
+        homingTarget = target;
+        isHoming = true;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -32,7 +51,8 @@ public class BulletUmbrax : MonoBehaviour
         if (other.CompareTag("Enemy")) return;
 
         var hs = other.GetComponent<HealthSystem>();
-        if (hs != null) hs.TakeDamage(damage);
+        if (hs != null)
+            hs.TakeDamage(damage);
 
         Destroy(gameObject);
     }

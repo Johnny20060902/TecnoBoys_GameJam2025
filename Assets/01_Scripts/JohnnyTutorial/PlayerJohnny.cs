@@ -50,9 +50,30 @@ public class PlayerJohnny : MonoBehaviour
     void HandleMovement()
     {
         float x = Input.GetAxisRaw("Horizontal");
-        if (x != 0) facing = (int)Mathf.Sign(x);
+        if (x != 0)
+        {
+            facing = (int)Mathf.Sign(x);
+            Flip();
+        }
+
         rb.velocity = new Vector2(x * moveSpeed, rb.velocity.y);
     }
+    void Flip()
+    {
+        bool lookingRight = transform.localScale.x > 0;
+
+        // Solo cuando realmente cambia la dirección
+        if (!((facing == 1 && !lookingRight) || (facing == -1 && lookingRight)))
+        {
+            Vector3 s = transform.localScale;
+            s.x *= -1;
+            transform.localScale = s;
+
+            // Reposicionar/rotar la espada según firePoint
+            if (combat != null) combat.ApplyHandPose();
+        }
+    }
+
 
     void HandleJump()
     {
