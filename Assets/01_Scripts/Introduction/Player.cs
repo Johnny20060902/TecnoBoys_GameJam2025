@@ -91,12 +91,16 @@ public class Player : MonoBehaviour, ITakeDamage
             canShootWorld = true;
             canJump = false;
             canDashWorld = false;
+
+            TutorialTextW2.Instance.ShowMessage("Muevete con WASD y usa click izquierdo para disparar al enemigo");
         }
         else if (scene == "Raul_SecondWorldLevel1")
         {
             styleMoveY = false;
             canShootWorld = false;
             canJump = true;
+
+            TutorialTextW2.Instance.ShowMessage("Investiga el nuevo mundo");
         }
         else if (scene == "Raul_SecondWorldLevel2")
         {
@@ -110,6 +114,7 @@ public class Player : MonoBehaviour, ITakeDamage
             canShootWorld = true;
             canJump = false;
             canDashWorld = true;
+            TutorialTextW2.Instance.ShowMessage("En algunos entornos podrás moverte por todo el escenario ademas de tener un dash con SHIFT");
         }
         else if (scene == "Raul_SecondWorldLevel4")
         {
@@ -117,6 +122,7 @@ public class Player : MonoBehaviour, ITakeDamage
             canShootWorld = true;
             canJump = false;
             canDashWorld = true;
+            TutorialTextW2.Instance.ShowMessage("Recoge el arma alien con E");
         }
         else if (scene == "Raul_SecondWorldLevel5")
         {
@@ -142,6 +148,7 @@ public class Player : MonoBehaviour, ITakeDamage
             hasAlienGun = true;
             canDashWorld = true;
             hasBeamWeapon = true;
+
         }
         UpdateWeaponVisibility();
     }
@@ -274,6 +281,7 @@ public class Player : MonoBehaviour, ITakeDamage
     public void UnlockThirdWeapon()
     {
         hasAlienGun = true;
+        TutorialTextW2.Instance.ShowMessage("Acabas de obtener la arma alien activala con 3");
     }
 
     void UpdateWeaponVisibility()

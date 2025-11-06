@@ -193,13 +193,18 @@ public class AlienUmbrax : MonoBehaviour, ITakeDamage
 
 
         if (life <= 0)
+        {
             Destroy(gameObject);
+            TutorialTextW2.Instance.ShowMessage("Busca a Xar’Kal");
+        }
 
 
 
-        if (life <= 90)
+
+        if (life <= 90 && life > 80)
         {
             playerScript.hasBeamWeapon = true;
+            TutorialTextW2.Instance.ShowMessage("Acabas de desbloquear el rayo alien usa 4 y dispara al enemigo");
 
         }
     }
