@@ -77,6 +77,9 @@ public class Player : MonoBehaviour, ITakeDamage
 
     public GameObject deathPanel;
 
+    [Header ("Animator")]
+    [SerializeField] private Animator animator;
+
 
     // Start is called before the first frame update
     void Start()
@@ -114,7 +117,7 @@ public class Player : MonoBehaviour, ITakeDamage
             canShootWorld = true;
             canJump = false;
             canDashWorld = true;
-            TutorialTextW2.Instance.ShowMessage("En algunos entornos podrás moverte por todo el escenario ademas de tener un dash con SHIFT");
+            TutorialTextW2.Instance.ShowMessage("En algunos entornos podrï¿½s moverte por todo el escenario ademas de tener un dash con SHIFT");
         }
         else if (scene == "Raul_SecondWorldLevel4")
         {
@@ -305,7 +308,7 @@ public class Player : MonoBehaviour, ITakeDamage
         if (lastMoveDir == Vector2.zero) return;
 
         float angle = Mathf.Atan2(lastMoveDir.y, lastMoveDir.x) * Mathf.Rad2Deg;
-        FirePoint.parent.rotation = Quaternion.Euler(0, 0, angle - 90f);
+        FirePoint.parent.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     void Attack()
@@ -361,19 +364,55 @@ public class Player : MonoBehaviour, ITakeDamage
 
             moveInput = new Vector2(x, y).normalized;
             rb.velocity = moveInput * moveSpeed;
+            
+            bool isMoving = moveInput.magnitude > 0.1f;
+
+            if (animator != null)
+            {
+                animator.SetBool("isRunning", isMoving);
+                animator.SetFloat("moveY", y);
+                animator.SetBool("isLookingUp", y > 0);
+            }
+
+            
+  
+            if (x < 0)
+            {
+                transform.localScale = new Vector3(-0.2f, 0.2f, 0.2f);
+            }
+            else if (x > 0)
+            {
+                transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+            }
         }
         else
         {
             if (Input.GetKey(KeyCode.A)) x -= 1f;
             if (Input.GetKey(KeyCode.D)) x += 1f;
 
+            moveInput = new Vector2(x, 0f);
             rb.velocity = new Vector2(x * moveSpeed, rb.velocity.y);
+            
+            bool isMoving = moveInput.magnitude > 0.1f;
+            if (animator != null)
+            {
+                animator.SetBool("isRunning", isMoving);
+            }
+
+
+            if (x < 0)
+            {
+                transform.localScale = new Vector3(-0.2f, 0.2f, 0.2f);
+            }
+            else if (x > 0)
+            {
+                transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+            }
         }
 
         if (moveInput != Vector2.zero)
             lastMoveDir = moveInput;
     }
-
 
     void Shoot()
     {

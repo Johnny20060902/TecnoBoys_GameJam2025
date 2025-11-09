@@ -9,13 +9,23 @@ public class KillZone : MonoBehaviour
         {
             HealthSystem hs = other.GetComponent<HealthSystem>();
             if (hs != null)
-            {
                 hs.TakeDamage(hs.maxHealth); // mata al jugador
+            return;
+        }
+
+        // Si es jefe → activa su muerte real
+        if (other.GetComponent<BossUmbrax>() != null)
+        {
+            HealthSystem hs = other.GetComponent<HealthSystem>();
+            if (hs != null)
+            {
+                hs.TakeDamage(hs.maxHealth); // dispara OnDeath()
+                Debug.Log("☠️ BossUmbrax cayó en KillZone → muerte activada");
             }
             return;
         }
 
-        // Si es enemigo → eliminar y actualizar spawner si existe
+        // Si es enemigo común → destruye normal
         if (other.CompareTag("Enemy"))
         {
             EnemyTracker tracker = other.GetComponent<EnemyTracker>();

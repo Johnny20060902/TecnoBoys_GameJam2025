@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8222960060273513141}
   - component: {fileID: 9018970365911533483}
   - component: {fileID: 9221973767095397239}
-  m_Layer: 12
+  m_Layer: 9
   m_Name: PortalBlue
   m_TagString: PortalBlue
   m_Icon: {fileID: 0}

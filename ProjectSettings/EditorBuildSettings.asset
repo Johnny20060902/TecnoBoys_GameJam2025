@@ -6,14 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/00_Scenes/MainMenu.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/00_Scenes/Raul_Menu.unity
+    guid: 632a642af53758b498de8949c57e9011
+  - enabled: 1
+    path: Assets/00_Scenes/Raul_IntroScene.unity
+    guid: 20dda33db8fb23b4ea59c7173742b432
   - enabled: 1
     path: Assets/00_Scenes/Raul_Introduction.unity
     guid: 012f468bed3e86c4c92b927c547305bd
-  - enabled: 1
-    path: Assets/00_Scenes/Raul_Menu.unity
-    guid: 632a642af53758b498de8949c57e9011
   - enabled: 1
     path: Assets/00_Scenes/Johnny_FirstWorldLevel1.unity
     guid: aba194ec0529eeb4aada55ca58eea38b
@@ -21,8 +21,11 @@ EditorBuildSettings:
     path: Assets/00_Scenes/Johnny_FirstWorldLevel2.unity
     guid: f4c5d3d18ee82094e9134a1c7a0f080a
   - enabled: 1
-    path: Assets/00_Scenes/Raul_IntroScene.unity
-    guid: 20dda33db8fb23b4ea59c7173742b432
+    path: Assets/00_Scenes/Johnny_FirstWorldLevel3.unity
+    guid: ab0e6ca0747d8b245b90f0e49a31c68c
+  - enabled: 1
+    path: Assets/00_Scenes/Raul_SecondWorldLevel1.unity
+    guid: 54fa408fb4a10ca49a412be58ea9aae3
   - enabled: 1
     path: Assets/00_Scenes/Raul_SecondWorldLevel2.unity
     guid: 7aee64d65fb8a104c89e902bdaf6b714
@@ -44,4 +47,28 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_Scenes/Leandro_ThirdWorldLevel1.unity
     guid: c899027db7f52af4fa4089f33b4387cf
+  - enabled: 1
+    path: Assets/00_Scenes/Leandro_ThirdWorldLevel2.unity
+    guid: 39905832d8aef564d987444cb52f7a24
+  - enabled: 1
+    path: Assets/00_Scenes/Leandro_ThirdWorldLevel3.unity
+    guid: c2de4b18563964c498bfc1572772605d
+  - enabled: 1
+    path: Assets/00_Scenes/Leandro_ThirdWorldLevel4.unity
+    guid: 413e300400604364395d38cd877259de
+  - enabled: 1
+    path: Assets/00_Scenes/Leandro_ThirdWorldLevel5.unity
+    guid: 81b05436a8723d14eb6ffdbc5467bc97
+  - enabled: 1
+    path: Assets/00_Scenes/Leandro_ThirdWorldLevel6.unity
+    guid: c4367ac7f3f4abb47851e7867c176cb2
+  - enabled: 1
+    path: Assets/00_Scenes/Johnny_FinalBattle.unity
+    guid: 607dc258aa1dc3242ae57f60b74a9157
+  - enabled: 1
+    path: Assets/00_Scenes/Raul_FinalGame.unity
+    guid: bb8d7cbeb3824534980e94181a43c9ba
+  - enabled: 1
+    path: Assets/00_Scenes/MainMenu.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}

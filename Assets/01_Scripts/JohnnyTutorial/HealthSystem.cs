@@ -8,29 +8,30 @@ public class HealthSystem : MonoBehaviour
     public float currentHealth;
 
     [Header("Efectos de muerte (opcional)")]
-    public GameObject deathEffect; // puedes dejar null si no quieres
+    public GameObject deathEffect;
     public bool destroyOnDeath = true;
 
-    // Evento para que otros scripts (HUD, animaciones, etc.) se suscriban
     public event Action OnDeath;
 
     private bool isDead = false;
+
+    public GameObject deathpanel;
 
     void Start()
     {
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(float dmg)
     {
         if (isDead) return;
 
-        currentHealth -= amount;
-        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+        currentHealth -= dmg;
+        Debug.Log($"🔥 Daño recibido: {dmg}, vida restante: {currentHealth}");
 
-        // Si la vida llega a cero, ejecuta muerte
-        if (currentHealth <= 0f && !isDead)
+        if (currentHealth <= 0)
         {
+            currentHealth = 0;
             Die();
         }
     }
@@ -45,35 +46,35 @@ public class HealthSystem : MonoBehaviour
 
     private void Die()
     {
+        if (isDead) return;
         isDead = true;
 
-        // Efecto de partículas o animación
+        Debug.Log($"💀 {name} ha muerto");
+
+        // 💥 Efecto visual opcional
         if (deathEffect != null)
             Instantiate(deathEffect, transform.position, Quaternion.identity);
 
-        // Llamar eventos (HUD, managers, etc.)
+        // 🔔 Notificar muerte a otros sistemas (BossUmbrax, UI, etc.)
         OnDeath?.Invoke();
 
-        // Si es el jugador, desactivamos controles
+        // 🧍 Si es jugador
         if (CompareTag("Player"))
         {
-            // Intenta desactivar control y mostrar mensaje
             var ctrl = GetComponent<PlayerJohnny>();
-            if (ctrl != null)
-                ctrl.enabled = false;
-
-            Debug.Log("💀 El jugador ha muerto 💀");
+            if (ctrl != null) ctrl.enabled = false;
+            deathpanel.SetActive(true);
         }
 
-        // Si es enemigo, eliminar o reportar al spawner
+        // 👾 Si es enemigo, informar a su tracker
         if (CompareTag("Enemy"))
         {
-            var spawnerTracker = GetComponent<EnemyTracker>();
-            if (spawnerTracker != null)
-                Destroy(spawnerTracker); // el spawner actualiza conteo en OnDestroy()
+            var tracker = GetComponent<EnemyTracker>();
+            if (tracker != null)
+                Destroy(tracker);
         }
 
-        // Destruir objeto si corresponde
+        // 🧨 Destruir si corresponde
         if (destroyOnDeath)
             Destroy(gameObject);
     }

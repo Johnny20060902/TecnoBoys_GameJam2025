@@ -50,8 +50,9 @@ public class TutorialManager : MonoBehaviour
         if (!switchedTo1) Show("¡Espada imbuida! Pulsa 1 para cambiar a energía condensada.");
     }
 
-    void Show(string msg)
+    public void Show(string msg)
     {
         if (ui != null) ui.text = msg;
     }
+
 }

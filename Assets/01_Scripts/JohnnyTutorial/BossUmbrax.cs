@@ -219,13 +219,35 @@ public class BossUmbrax : MonoBehaviour
     void OnBossDeath()
     {
         Debug.Log("💀 Boss derrotado. Cargando siguiente nivel...");
+
+        // ⚠️ Detiene todos los comportamientos del jefe
+        StopAllCoroutines();
+        isAttacking = false;
+        rb.velocity = Vector2.zero;
+
+        // ❌ Desactiva su IA y ataques para que deje de moverse
+        this.enabled = false;
+
+        // 🕒 Inicia carga con seguridad
         StartCoroutine(LoadNextLevel());
     }
 
     IEnumerator LoadNextLevel()
     {
+        Debug.Log("⏳ Esperando 2 segundos antes de cargar siguiente nivel...");
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("Raul_SecondWorldLevel1");
+
+        string nextScene = "Raul_SecondWorldLevel1";
+
+        // ✅ Validar que la escena existe en Build Settings
+        if (!Application.CanStreamedLevelBeLoaded(nextScene))
+        {
+            Debug.LogError($"❌ No se encontró la escena '{nextScene}' en Build Settings. Añadila para poder cargarla.");
+            yield break;
+        }
+
+        Debug.Log($"🚪 Cargando escena: {nextScene}");
+        SceneManager.LoadScene(nextScene);
     }
 
     void OnDrawGizmosSelected()

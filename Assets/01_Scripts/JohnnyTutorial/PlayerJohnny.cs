@@ -29,11 +29,10 @@ public class PlayerJohnny : MonoBehaviour
     {
         int currentScene = SceneManager.GetActiveScene().buildIndex;
 
-        // 🔹 Si estamos en nivel > 1, marcamos espada obtenida
+
         if (PlayerProgress.Instance != null && currentScene > 1)
             PlayerProgress.Instance.SetSwordObtained(true);
 
-        // 🔹 Activar espada si ya la tenía o si es nivel > 1
         if (PlayerProgress.Instance != null && (PlayerProgress.Instance.hasSword || currentScene > 1))
         {
             if (combat != null)
@@ -63,7 +62,7 @@ public class PlayerJohnny : MonoBehaviour
         bool lookingRight = transform.localScale.x > 0;
 
         // Solo cuando realmente cambia la dirección
-        if (!((facing == 1 && !lookingRight) || (facing == -1 && lookingRight)))
+        if ((facing == 1 && !lookingRight) || (facing == -1 && lookingRight))
         {
             Vector3 s = transform.localScale;
             s.x *= -1;

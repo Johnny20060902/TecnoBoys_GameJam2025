@@ -4,6 +4,7 @@ public class PlayerProgress : MonoBehaviour
 {
     public static PlayerProgress Instance;
     public bool hasSword;
+    public bool hasUnlockedHumanForm;
 
     void Awake()
     {
@@ -16,6 +17,11 @@ public class PlayerProgress : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    public void SetHumanFormUnlocked(bool value)
+    {
+        hasUnlockedHumanForm = value;
+        Debug.Log($"🧍 PlayerProgress actualizado: hasUnlockedHumanForm = {hasUnlockedHumanForm}");
     }
 
     public void SetSwordObtained(bool value)

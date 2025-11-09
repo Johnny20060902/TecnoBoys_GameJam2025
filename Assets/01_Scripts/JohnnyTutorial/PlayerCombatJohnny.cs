@@ -5,6 +5,8 @@ using System.Collections;
 public class PlayerCombatJohnny : MonoBehaviour
 {
     public PlayerJohnny ctrl;
+    [HideInInspector] public bool autoAlignSword = true;
+
 
     [Header("Rango")]
     public Transform firePoint;
@@ -12,7 +14,7 @@ public class PlayerCombatJohnny : MonoBehaviour
     public float fireCooldown = 0.5f;
 
     [Header("Espada")]
-    public GameObject swordInHand;
+    [HideInInspector] public GameObject swordInHand;
     public Transform meleeOrigin;
     public float meleeRange = 1.1f;
     public float meleeHeight = 1f;
@@ -32,8 +34,9 @@ public class PlayerCombatJohnny : MonoBehaviour
     public float handOffsetX = 0.6f;
     public float handOffsetY = 0.0f;
 
-    bool hasSword;
-    int mode = 1; // 1 = disparo, 2 = espada
+    [HideInInspector] public bool hasSword;
+    [HideInInspector] public int mode = 1; // 1 = disparo, 2 = espada
+
     float cd;
     bool imbued;
 
@@ -147,9 +150,11 @@ public class PlayerCombatJohnny : MonoBehaviour
     {
         if (cd > 0 || bulletPrefab == null || firePoint == null) return;
         var b = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        b.transform.right = (ctrl != null && ctrl.facing < 0) ? Vector3.left : Vector3.right;
+        int sign = GetFacingSign();
+        b.transform.right = (sign < 0) ? Vector3.left : Vector3.right;
         cd = fireCooldown;
     }
+
 
     void Melee()
     {
@@ -217,14 +222,27 @@ public class PlayerCombatJohnny : MonoBehaviour
 
     void TryPickUpSword()
     {
+        var transformador = GetComponent<PlayerTransformation>();
+        var sr = GetComponent<SpriteRenderer>();
+
+        // 🚫 Bloqueo absoluto: si es Elarion o si su sprite es el de Elarion
+        if ((transformador != null && transformador.EsElarion()) ||
+            (sr != null && transformador != null && sr.sprite == transformador.elarionSprite))
+        {
+            Debug.Log("❌ Elarion no puede recoger ni usar espada.");
+            return;
+        }
+
+        // ✅ Detección normal de espada cercana
         Collider2D swordNearby = Physics2D.OverlapCircle(transform.position, pickUpRange, swordLayer);
-        if (swordNearby != null)
+        if (swordNearby != null && !hasSword)
         {
             GrantSword();
             Destroy(swordNearby.gameObject);
             Debug.Log("🗡️ Espada recogida correctamente con tecla E");
         }
     }
+
 
     // === MÉTODOS PÚBLICOS USADOS POR WEAPONPICKUP ===
     public void UnlockSword()
@@ -255,19 +273,32 @@ public class PlayerCombatJohnny : MonoBehaviour
         Debug.Log("🗡️ Espada otorgada al jugador (pickup o script externo)");
     }
 
-    void UpdateVisuals()
+    public void UpdateVisuals()
     {
         if (swordInHand != null)
             swordInHand.SetActive(hasSword && mode == 2);
     }
 
+    // Añade este helper dentro de la clase
+    int GetFacingSign()
+    {
+        // Si usas flipX en el SpriteRenderer del player, podés leerlo aquí:
+        // var sr = GetComponent<SpriteRenderer>();
+        // if (sr != null) return sr.flipX ? -1 : 1;
+
+        // Por defecto: usa el signo de la escala actual del player
+        return transform.lossyScale.x < 0f ? -1 : 1;
+    }
+
+    // Reemplaza TU método ApplyHandPose() por este:
     public void ApplyHandPose()
     {
+        if (!autoAlignSword) return; // 🔒 No reposicionar si está en modo humano
         if (swordInHand == null) return;
 
-        int sign = (ctrl != null && ctrl.facing < 0) ? -1 : 1;
+        int sign = GetFacingSign();
 
-        // Posición: prioriza el firePoint (espejado), si no hay usa offsets
+        // 1) Posición de la mano (espejo solo en X)
         Vector3 targetLocalPos;
         if (firePoint != null)
         {
@@ -276,24 +307,26 @@ public class PlayerCombatJohnny : MonoBehaviour
         }
         else
         {
-            targetLocalPos = new Vector3(handOffsetX * sign, handOffsetY, swordBaseLocalPos.z);
+            targetLocalPos = new Vector3(Mathf.Abs(handOffsetX) * sign, handOffsetY, swordBaseLocalPos.z);
         }
         swordInHand.transform.localPosition = targetLocalPos;
 
-        // Rotación: espejo perfecto; conserva el Z base de la espada
-        swordInHand.transform.localRotation =
-            Quaternion.Euler(0f, (sign < 0 ? 180f : 0f), swordBaseZ);
+        // 2) NADA de rotación en Y. Mantén tu ángulo Z original (diagonal bonita).
+        //    El espejo lo hace la escala X.
+        swordInHand.transform.localEulerAngles = new Vector3(0f, 0f, swordBaseZ);
 
-        // Escala original
-        swordInHand.transform.localScale = swordBaseLocalScale;
+        // 3) Espejo con escala X (no cambies Y ni Z)
+        var baseS = swordBaseLocalScale;
+        swordInHand.transform.localScale = new Vector3(Mathf.Abs(baseS.x) * sign, baseS.y, baseS.z);
 
-        // Alinear meleeOrigin al lado actual
+        // 4) Alineá el meleeOrigin al lado actual
         if (meleeOrigin != null)
         {
-            Vector3 m = meleeOrigin.localPosition;
+            var m = meleeOrigin.localPosition;
             m.x = Mathf.Abs(m.x) * sign;
             meleeOrigin.localPosition = m;
         }
     }
+
 
 }
