@@ -1,85 +1,160 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
+/// <summary>
+/// Boss tanque al estilo Metal Slug.
+/// Movimiento con inercia, efectos visuales y fases cinematográficas.
+/// </summary>
 public class BossTankController : MonoBehaviour
 {
     [Header("Vida")]
-    public int maxHealth = 200;
+    public int maxHealth = 250;
     public int currentHealth;
 
     [Header("Referencias")]
     public Transform player;
-    public Transform firePointMain;
-    public Transform firePointLeft;
-    public Transform firePointRight;
+    public Transform fireMain;
+    public Transform fireLeft;
+    public Transform fireRight;
     public Transform missileLauncher;
     public GameObject bulletPrefab;
     public GameObject heavyBulletPrefab;
     public GameObject missilePrefab;
+    public GameObject minePrefab;
+    public GameObject muzzleFlashPrefab;
+    public GameObject hitEffectPrefab;
+    public GameObject smokePrefab;
 
-    [Header("Velocidades y tiempos")]
+    [Header("UI")]
+    public Canvas bossCanvas;
+    public Image healthBarFill;
+
+    [Header("Movimiento")]
     public float moveSpeed = 1.5f;
-    public float fireDelayNormal = 0.35f;
-    public float fireDelayHeavy = 2.5f;
-    public float missileDelay = 1.2f;
-    public float patrolDistance = 8f;
-    public float bulletSpeed = 9f;
-    public float heavyForce = 12f;
-
+    public float acceleration = 3f;
+    public float patrolRange = 8f;
+    public float patrolPause = 0.3f;
     private Vector3 startPos;
-    private bool facingRight = false;
-    private bool isAttacking = false;
-    private bool enraged = false;
-    private bool introDone = false;
+    private float targetSpeed;
+    private float currentSpeed;
+    private bool reversing;
 
-    private int patternIndex = 0;
+    [Header("Proyectiles")]
+    public float bulletSpeed = 10f;
+    public float heavyForce = 12f;
+    public float missileDelay = 1.2f;
+
+    [Header("Tiempos")]
+    public float fireDelay = 0.35f;
+    public float patternCooldown = 1.2f;
+
+    [Header("Telegraph")]
+    public float flashTime = 0.25f;
+    public Color flashColor = Color.red;
+
+    [Header("Efectos visuales")]
+    public float shakeMagnitude = 0.08f;
+    public float smokeSpawnRate = 0.5f;
+    private float smokeTimer;
+
+    private SpriteRenderer sr;
+    private Color baseColor;
+    private bool facingRight = true;
+    private bool isAttacking;
+    private bool enragedPhase2;
+    private bool finalPhase;
+    private bool introDone;
+
+    private int lastPattern = -1;
+    private float leftBound, rightBound;
+
+    private enum State { Intro, Patrol, Attack, Dead }
+    private State state = State.Intro;
+
+    private AudioSource audioSource;
 
     private void Start()
     {
-        if (!player)
-            Debug.LogWarning("⚠️ BossTankController: Asigna el jugador.");
+        sr = GetComponentInChildren<SpriteRenderer>();
+        if (sr) baseColor = sr.color;
 
         currentHealth = maxHealth;
         startPos = transform.position;
-        StartCoroutine(IntroDelay());
+        leftBound = startPos.x - patrolRange;
+        rightBound = startPos.x + patrolRange;
+        audioSource = GetComponent<AudioSource>();
+
+        StartCoroutine(IntroSequence());
+        InitUI();
     }
 
-    private IEnumerator IntroDelay()
+    private void InitUI()
     {
-        yield return new WaitForSeconds(2f);
-        introDone = true;
-        StartCoroutine(MainLoop());
+        if (bossCanvas)
+        {
+            Canvas canvas = Instantiate(bossCanvas);
+            healthBarFill = canvas.GetComponentInChildren<Image>();
+        }
     }
 
     private void Update()
     {
-        if (!player || !introDone) return;
+        if (!introDone || state == State.Dead || !player) return;
 
         FacePlayer();
 
-        if (!isAttacking)
-            PatrolMovement();
+        if (state == State.Patrol && !isAttacking)
+            HandleMovement();
+
+        UpdateUI();
+        HandleSmokeEffects();
     }
 
-    // =========================================================
-    // 🚜 MOVIMIENTO
-    // =========================================================
-    private void PatrolMovement()
+    // ============================================================
+    // MOVIMIENTO CON INERCIA
+    // ============================================================
+    private void HandleMovement()
     {
         float dir = facingRight ? 1f : -1f;
-        transform.Translate(Vector2.right * dir * moveSpeed * Time.deltaTime);
+        targetSpeed = dir * moveSpeed;
+        currentSpeed = Mathf.Lerp(currentSpeed, targetSpeed, Time.deltaTime * acceleration);
 
-        if (Mathf.Abs(transform.position.x - startPos.x) >= patrolDistance)
+        transform.Translate(Vector2.right * currentSpeed * Time.deltaTime);
+
+        // Vibración de motor
+        transform.localPosition += (Vector3)(Random.insideUnitCircle * 0.003f);
+
+        if (transform.position.x > rightBound && !reversing)
         {
-            facingRight = !facingRight;
+            reversing = true;
+            facingRight = false;
             Flip();
+            StartCoroutine(PatrolPause());
         }
+        else if (transform.position.x < leftBound && !reversing)
+        {
+            reversing = true;
+            facingRight = true;
+            Flip();
+            StartCoroutine(PatrolPause());
+        }
+    }
+
+    private IEnumerator PatrolPause()
+    {
+        float cacheSpeed = moveSpeed;
+        moveSpeed = 0;
+        yield return new WaitForSeconds(patrolPause);
+        moveSpeed = cacheSpeed;
+        reversing = false;
     }
 
     private void Flip()
     {
         Vector3 s = transform.localScale;
-        s.x *= -1f;
+        s.x *= -1;
         transform.localScale = s;
     }
 
@@ -93,9 +168,17 @@ public class BossTankController : MonoBehaviour
         }
     }
 
-    // =========================================================
-    // 🔄 CICLO DE ATAQUES
-    // =========================================================
+    // ============================================================
+    // BUCLE PRINCIPAL
+    // ============================================================
+    private IEnumerator IntroSequence()
+    {
+        yield return new WaitForSeconds(1.5f);
+        introDone = true;
+        state = State.Patrol;
+        StartCoroutine(MainLoop());
+    }
+
     private IEnumerator MainLoop()
     {
         while (currentHealth > 0)
@@ -103,220 +186,337 @@ public class BossTankController : MonoBehaviour
             if (!isAttacking)
             {
                 isAttacking = true;
+                state = State.Attack;
 
-                int nextPattern = Random.Range(0, 4);
+                int pattern = ChoosePattern();
+                yield return ExecutePattern(pattern);
 
-                switch (nextPattern)
-                {
-                    case 0: yield return StartCoroutine(Pattern_TurretBurst()); break;
-                    case 1: yield return StartCoroutine(Pattern_HeavyCannonCombo()); break;
-                    case 2: yield return StartCoroutine(Pattern_MissileVolley()); break;
-                    case 3: yield return StartCoroutine(Pattern_MoveAndFire()); break;
-                }
-
-                yield return new WaitForSeconds(Random.Range(1.2f, 1.8f)); 
+                yield return new WaitForSeconds(Random.Range(patternCooldown * 0.9f, patternCooldown * 1.3f));
+                state = State.Patrol;
                 isAttacking = false;
             }
             yield return null;
         }
     }
 
-    // =========================================================
-    // 🔫 PATRONES DE ATAQUE
-    // =========================================================
-    private IEnumerator Pattern_TurretBurst()
+    private int ChoosePattern()
     {
-        Debug.Log("🔫 Patrón: Ametralladora equilibrada");
+        List<int> patterns = new();
 
-        int totalBursts = enraged ? 4 : 3;
-        int bulletsPerBurst = enraged ? 5 : 3;
-        float spread = enraged ? 8f : 6f;
+        if (!enragedPhase2 && !finalPhase)
+            patterns.AddRange(new[] { 0, 1, 2, 3 });
+        else if (enragedPhase2 && !finalPhase)
+            patterns.AddRange(new[] { 0, 1, 2, 3, 4, 5 });
+        else if (finalPhase)
+            patterns.AddRange(new[] { 0, 1, 2, 3, 4, 5, 6 });
 
-        for (int b = 0; b < totalBursts; b++)
+        int chosen;
+        int safety = 10;
+        do
         {
-            for (int i = 0; i < bulletsPerBurst; i++)
-            {
-                if (i % 2 == 0)
-                    FireBulletWithSpread(firePointLeft, spread);
-                else
-                    FireBulletWithSpread(firePointRight, spread);
+            chosen = patterns[Random.Range(0, patterns.Count)];
+            safety--;
+        } while (chosen == lastPattern && safety > 0);
 
-                yield return new WaitForSeconds(fireDelayNormal * 1.1f);
-            }
-            yield return new WaitForSeconds(Random.Range(1.0f, 1.3f));
+        lastPattern = chosen;
+        return chosen;
+    }
+
+    private IEnumerator ExecutePattern(int id)
+    {
+        switch (id)
+        {
+            case 0: yield return Pattern_MachineGunSweep(); break;
+            case 1: yield return Pattern_HeavyBombard(); break;
+            case 2: yield return Pattern_MissileSalvo(); break;
+            case 3: yield return Pattern_WalkingFire(); break;
+            case 4: yield return Pattern_MineAndSpray(); break;
+            case 5: yield return Pattern_FlankShot(); break;
+            case 6: yield return Pattern_FuryChain(); break;
         }
     }
 
-    private IEnumerator Pattern_HeavyCannonCombo()
+    // ============================================================
+    // PATRONES
+    // ============================================================
+    private IEnumerator Pattern_MachineGunSweep()
     {
-        Debug.Log("💥 Patrón: Cañón pesado + apoyo táctico");
-
-        int volleys = enraged ? 3 : 2;
-
-        for (int i = 0; i < volleys; i++)
+        yield return FlashTelegraph();
+        for (int i = 0; i < (enragedPhase2 ? 4 : 3); i++)
         {
-            FireHeavy(firePointMain);
-            yield return new WaitForSeconds(0.4f);
-
-            for (int j = 0; j < (enraged ? 2 : 1); j++)
-            {
-                FireBulletWithSpread(firePointLeft, 5f);
-                yield return new WaitForSeconds(0.25f);
-                FireBulletWithSpread(firePointRight, 5f);
-                yield return new WaitForSeconds(0.3f);
-            }
-
-            yield return new WaitForSeconds(Random.Range(1.2f, 1.6f));
+            FireBulletWithSpread(fireLeft, 7);
+            FireBulletWithSpread(fireRight, 7);
+            yield return new WaitForSeconds(fireDelay);
         }
     }
 
-    private IEnumerator Pattern_MissileVolley()
+    private IEnumerator Pattern_HeavyBombard()
     {
-        Debug.Log("🚀 Patrón: Misiles guiados balanceados");
-
-        int count = enraged ? 5 : 3;
-
-        for (int i = 0; i < count; i++)
-        {
-            if (missilePrefab && missileLauncher)
-            {
-                Quaternion rot = Quaternion.Euler(0, 0, Random.Range(75f, 105f));
-                GameObject missile = Instantiate(missilePrefab, missileLauncher.position, rot);
-
-                HomingMissile hm = missile.GetComponent<HomingMissile>();
-                if (hm && player) hm.SetTarget(player);
-
-                Destroy(missile, 5.5f);
-            }
-
-            yield return new WaitForSeconds(Random.Range(1.0f, 1.4f));
-        }
-    }
-
-    private IEnumerator Pattern_MoveAndFire()
-    {
-        Debug.Log("🏃 Patrón: Avance con fuego limitado");
-
-        Vector3 advance = transform.position + new Vector3(facingRight ? 2.5f : -2.5f, 0, 0);
-        yield return MoveToPosition(advance, 1.2f);
-
-        int shots = enraged ? 3 : 2;
-
+        yield return FlashTelegraph();
+        int shots = finalPhase ? 6 : enragedPhase2 ? 4 : 3;
         for (int i = 0; i < shots; i++)
         {
-            FireBulletWithSpread(firePointLeft, 5f);
-            FireBulletWithSpread(firePointRight, 5f);
-            yield return new WaitForSeconds(0.4f);
+            FireHeavyArc(fireMain, 0.3f);
+            RecoilEffect(0.2f);
+            yield return new WaitForSeconds(0.6f);
         }
+    }
 
+    private IEnumerator Pattern_MissileSalvo()
+    {
+        yield return FlashTelegraph();
+        int missiles = finalPhase ? 7 : enragedPhase2 ? 5 : 3;
+        for (int i = 0; i < missiles; i++)
+        {
+            GameObject missile = Instantiate(missilePrefab, missileLauncher.position, Quaternion.identity);
+            var hm = missile.GetComponent<HomingMissile>();
+            if (hm && player) hm.SetTarget(player);
+            Destroy(missile, 6f);
+            yield return new WaitForSeconds(missileDelay * Random.Range(0.7f, 1.1f));
+        }
+    }
+
+    private IEnumerator Pattern_WalkingFire()
+    {
+        yield return FlashTelegraph();
+        Vector3 target = transform.position + new Vector3(facingRight ? 3 : -3, 0, 0);
+        yield return MoveTo(target, 1f);
+        for (int i = 0; i < (enragedPhase2 ? 4 : 2); i++)
+        {
+            FireBulletWithSpread(fireLeft, 6);
+            FireBulletWithSpread(fireRight, 6);
+            yield return new WaitForSeconds(fireDelay);
+        }
+        yield return new WaitForSeconds(0.3f);
+        FireHeavyArc(fireMain, 0.25f);
+        RecoilEffect(0.3f);
+        yield return MoveTo(startPos, 1f);
+    }
+
+    private IEnumerator Pattern_MineAndSpray()
+    {
+        yield return FlashTelegraph();
+        if (minePrefab && fireMain)
+        {
+            GameObject mine = Instantiate(minePrefab, fireMain.position, Quaternion.identity);
+            Rigidbody2D rb = mine.GetComponent<Rigidbody2D>();
+            if (rb)
+                rb.AddForce((facingRight ? Vector2.right : Vector2.left) * 4f + Vector2.up * 2f, ForceMode2D.Impulse);
+            Destroy(mine, 8f);
+        }
+        FireBulletWithSpread(fireLeft, 5);
+        FireBulletWithSpread(fireRight, 5);
         yield return new WaitForSeconds(0.8f);
-        FireHeavy(firePointMain);
-
-        Vector3 retreat = startPos;
-        yield return MoveToPosition(retreat, 1.1f);
     }
 
-    // =========================================================
-    // 🎯 DISPAROS
-    // =========================================================
-    private void FireBulletWithSpread(Transform firePoint, float spread)
+    private IEnumerator Pattern_FlankShot()
     {
-        if (!player || !firePoint || !bulletPrefab) return;
+        yield return FlashTelegraph();
+        for (int i = 0; i < (finalPhase ? 4 : 3); i++)
+        {
+            FireBulletFan(fireMain, 5, 25);
+            yield return new WaitForSeconds(fireDelay * 1.2f);
+        }
+    }
 
-        Vector2 dir = (player.position - firePoint.position).normalized;
+    private IEnumerator Pattern_FuryChain()
+    {
+        yield return FlashTelegraph();
+        StartCoroutine(Pattern_MachineGunSweep());
+        yield return new WaitForSeconds(0.6f);
+        StartCoroutine(Pattern_MissileSalvo());
+        yield return new WaitForSeconds(0.5f);
+        FireHeavyArc(fireMain, 0.35f);
+        RecoilEffect(0.3f);
+        yield return new WaitForSeconds(1f);
+    }
 
-        float angleOffset = Random.Range(-spread, spread);
+    // ============================================================
+    // DISPAROS
+    // ============================================================
+    private void FireBulletWithSpread(Transform fp, float spread)
+    {
+        if (!fp || !player) return;
+        Vector2 dir = (player.position - fp.position).normalized;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + Random.Range(-spread, spread);
+        SpawnBullet(fp.position, angle, bulletSpeed);
+        SpawnMuzzleFlash(fp);
+    }
+
+    private void FireBulletFan(Transform fp, int count, float spread)
+    {
+        if (!fp || !player) return;
+        Vector2 dir = (player.position - fp.position).normalized;
         float baseAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        float finalAngle = baseAngle + angleOffset;
-
-        Vector2 spreadDir = new Vector2(Mathf.Cos(finalAngle * Mathf.Deg2Rad), Mathf.Sin(finalAngle * Mathf.Deg2Rad));
-
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 0, finalAngle));
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-
-        if (rb)
+        for (int i = 0; i < count; i++)
         {
-            rb.gravityScale = 0f;
-            rb.velocity = spreadDir * bulletSpeed;
+            float offset = Mathf.Lerp(-spread / 2, spread / 2, (float)i / (count - 1));
+            SpawnBullet(fp.position, baseAngle + offset, bulletSpeed);
         }
-
-        Destroy(bullet, 3.5f);
+        SpawnMuzzleFlash(fp);
     }
 
-    private void FireHeavy(Transform firePoint)
+    private void FireHeavyArc(Transform fp, float upBias)
     {
-        if (!player || !firePoint || !heavyBulletPrefab) return;
-
-        Vector2 dir = (player.position - firePoint.position).normalized;
-        GameObject shell = Instantiate(heavyBulletPrefab, firePoint.position, Quaternion.identity);
-
+        if (!fp || !player) return;
+        Vector2 dir = (player.position - fp.position).normalized;
+        GameObject shell = Instantiate(heavyBulletPrefab, fp.position, Quaternion.identity);
         Rigidbody2D rb = shell.GetComponent<Rigidbody2D>();
-        if (rb)
-        {
-            rb.gravityScale = 0.6f;
-            rb.AddForce((dir + Vector2.up * 0.25f) * heavyForce, ForceMode2D.Impulse);
-        }
-
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        shell.transform.rotation = Quaternion.Euler(0, 0, angle);
+        rb.gravityScale = 0.6f;
+        rb.AddForce((dir + Vector2.up * upBias) * heavyForce, ForceMode2D.Impulse);
+        SpawnMuzzleFlash(fp);
         Destroy(shell, 6f);
     }
 
-    private IEnumerator MoveToPosition(Vector3 target, float duration)
+    private void SpawnBullet(Vector3 pos, float angle, float speed)
+    {
+        GameObject bullet = Instantiate(bulletPrefab, pos, Quaternion.Euler(0, 0, angle));
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        if (rb)
+            rb.velocity = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad)) * speed;
+        Destroy(bullet, 3.5f);
+    }
+
+    private void SpawnMuzzleFlash(Transform fp)
+    {
+        if (!muzzleFlashPrefab) return;
+        GameObject flash = Instantiate(muzzleFlashPrefab, fp.position, fp.rotation);
+        Destroy(flash, 0.2f);
+    }
+
+    private void RecoilEffect(float intensity)
+    {
+        Vector3 original = transform.position;
+        Vector3 offset = new Vector3(facingRight ? -0.2f : 0.2f, 0, 0);
+        transform.position = original + offset * intensity;
+        StartCoroutine(ResetRecoil(original));
+    }
+
+    private IEnumerator ResetRecoil(Vector3 origin)
+    {
+        yield return new WaitForSeconds(0.1f);
+        transform.position = origin;
+    }
+
+    private IEnumerator MoveTo(Vector3 target, float time)
     {
         Vector3 start = transform.position;
-        float t = 0f;
-        while (t < duration)
+        float t = 0;
+        while (t < time)
         {
-            transform.position = Vector3.Lerp(start, target, t / duration);
+            transform.position = Vector3.Lerp(start, target, t / time);
             t += Time.deltaTime;
             yield return null;
         }
-        transform.position = target;
     }
 
-    // =========================================================
-    // 💀 VIDA Y ENRAGED
-    // =========================================================
+    private IEnumerator FlashTelegraph()
+    {
+        if (!sr) yield break;
+        sr.color = flashColor;
+        yield return new WaitForSeconds(flashTime);
+        sr.color = baseColor;
+    }
+
+    // ============================================================
+    // VIDA / EFECTOS
+    // ============================================================
     public void TakeDamage(int dmg)
     {
+        if (state == State.Dead) return;
         currentHealth -= dmg;
+        UpdateUI();
 
-        if (!enraged && currentHealth <= maxHealth * 0.5f)
+        if (hitEffectPrefab)
+            Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
+
+        StartCoroutine(DamageFlash());
+
+        if (!enragedPhase2 && currentHealth <= maxHealth * 0.5f)
         {
-            enraged = true;
+            enragedPhase2 = true;
+            moveSpeed *= 1.2f;
+            fireDelay *= 0.85f;
+            missileDelay *= 0.85f;
+            Debug.Log("⚠️ ENTRA EN FASE 2 (agresiva)");
+        }
+
+        if (!finalPhase && currentHealth <= maxHealth * 0.25f)
+        {
+            finalPhase = true;
             moveSpeed *= 1.3f;
-            fireDelayNormal *= 0.8f;
-            missileDelay *= 0.8f;
-            Debug.Log("🔥 ENRAGED MODE ACTIVADO");
+            patternCooldown *= 0.75f;
+            Debug.Log("💢 FASE FINAL — FURIA TOTAL");
         }
 
         if (currentHealth <= 0)
         {
-            StopAllCoroutines();
             StartCoroutine(DeathSequence());
+        }
+    }
+
+    private IEnumerator DamageFlash()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            sr.color = flashColor;
+            yield return new WaitForSeconds(0.08f);
+            sr.color = baseColor;
         }
     }
 
     private IEnumerator DeathSequence()
     {
+        state = State.Dead;
         Debug.Log("💥 Tanque destruido");
-        yield return new WaitForSeconds(1f);
+        for (int i = 0; i < 10; i++)
+        {
+            transform.position += (Vector3)Random.insideUnitCircle * 0.15f;
+            sr.color = (i % 2 == 0) ? flashColor : baseColor;
+            yield return new WaitForSeconds(0.1f);
+        }
         Destroy(gameObject);
     }
 
-    // =========================================================
-    // 💥 RECIBIR DAÑO DEL JUGADOR
-    // =========================================================
-    private void OnTriggerEnter2D(Collider2D collision)
+    // ============================================================
+    // EFECTOS / UI
+    // ============================================================
+    private void HandleSmokeEffects()
     {
-        // 🔹 Daño por bala del jugador
-        if (collision.CompareTag("PlayerBullet"))
+        if (!finalPhase || !smokePrefab) return;
+        smokeTimer += Time.deltaTime;
+        if (smokeTimer >= smokeSpawnRate)
+        {
+            smokeTimer = 0;
+            Vector3 pos = transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(0.5f, 1.5f), 0);
+            Instantiate(smokePrefab, pos, Quaternion.identity);
+        }
+    }
+
+    private void UpdateUI()
+    {
+        if (healthBarFill)
+        {
+            float fill = Mathf.Clamp01((float)currentHealth / maxHealth);
+            healthBarFill.fillAmount = fill;
+        }
+    }
+
+    // ============================================================
+    // COLISIONES
+    // ============================================================
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("PlayerBullet"))
         {
             TakeDamage(10);
-            Destroy(collision.gameObject);
+            Destroy(col.gameObject);
         }
+    }
 
-       
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(startPos + Vector3.left * patrolRange, startPos + Vector3.right * patrolRange);
     }
 }

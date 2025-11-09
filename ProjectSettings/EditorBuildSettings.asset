@@ -44,4 +44,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_Scenes/Leandro_ThirdWorldLevel1.unity
     guid: c899027db7f52af4fa4089f33b4387cf
+  - enabled: 1
+    path: Assets/00_Scenes/Leandro_ThirdWorldLevel2.unity
+    guid: 39905832d8aef564d987444cb52f7a24
+  - enabled: 1
+    path: Assets/00_Scenes/Leandro_ThirdWorldLevel3.unity
+    guid: c2de4b18563964c498bfc1572772605d
+  - enabled: 1
+    path: Assets/00_Scenes/Leandro_ThirdWorldLevel4.unity
+    guid: 413e300400604364395d38cd877259de
+  - enabled: 1
+    path: Assets/00_Scenes/Leandro_ThirdWorldLevel5.unity
+    guid: 81b05436a8723d14eb6ffdbc5467bc97
+  - enabled: 1
+    path: Assets/00_Scenes/Leandro_ThirdWorldLevel6.unity
+    guid: c4367ac7f3f4abb47851e7867c176cb2
   m_configObjects: {}
