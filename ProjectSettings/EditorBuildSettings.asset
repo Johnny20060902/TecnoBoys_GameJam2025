@@ -6,6 +6,57 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/00_Scenes/MainMenu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/00_Scenes/Raul_Introduction.unity
+    guid: 012f468bed3e86c4c92b927c547305bd
+  - enabled: 1
+    path: Assets/00_Scenes/Raul_Menu.unity
+    guid: 632a642af53758b498de8949c57e9011
+  - enabled: 1
+    path: Assets/00_Scenes/Johnny_FirstWorldLevel1.unity
+    guid: aba194ec0529eeb4aada55ca58eea38b
+  - enabled: 1
+    path: Assets/00_Scenes/Johnny_FirstWorldLevel2.unity
+    guid: f4c5d3d18ee82094e9134a1c7a0f080a
+  - enabled: 1
+    path: Assets/00_Scenes/Raul_IntroScene.unity
+    guid: 20dda33db8fb23b4ea59c7173742b432
+  - enabled: 1
+    path: Assets/00_Scenes/Raul_SecondWorldLevel2.unity
+    guid: 7aee64d65fb8a104c89e902bdaf6b714
+  - enabled: 1
+    path: Assets/00_Scenes/Raul_SecondWorldLevel3.unity
+    guid: 59eb0da904c9fb54f918d16b450d514d
+  - enabled: 1
+    path: Assets/00_Scenes/Raul_SecondWorldLevel4.unity
+    guid: e6e62cc2a7516a94f8da765966a55a8f
+  - enabled: 1
+    path: Assets/00_Scenes/Raul_SecondWorldLevel6.unity
+    guid: a4c5e0fa9d7309145bbd70b066750b53
+  - enabled: 1
+    path: Assets/00_Scenes/Raul_SecondWorldLevel5.unity
+    guid: ff060c3b18fa102419cfa492b1f74a5b
+  - enabled: 1
+    path: Assets/00_Scenes/Raul_SecondWorldFinalBattle.unity
+    guid: c458d7580d1160f4a81ea09cea3a24f4
+  - enabled: 1
+    path: Assets/00_Scenes/Leandro_ThirdWorldLevel1.unity
+    guid: c899027db7f52af4fa4089f33b4387cf
+  - enabled: 1
+    path: Assets/00_Scenes/Leandro_ThirdWorldLevel2.unity
+    guid: 39905832d8aef564d987444cb52f7a24
+  - enabled: 1
+    path: Assets/00_Scenes/Leandro_ThirdWorldLevel3.unity
+    guid: c2de4b18563964c498bfc1572772605d
+  - enabled: 1
+    path: Assets/00_Scenes/Leandro_ThirdWorldLevel4.unity
+    guid: 413e300400604364395d38cd877259de
+  - enabled: 1
+    path: Assets/00_Scenes/Leandro_ThirdWorldLevel5.unity
+    guid: 81b05436a8723d14eb6ffdbc5467bc97
+  - enabled: 1
+    path: Assets/00_Scenes/Leandro_ThirdWorldLevel6.unity
+    guid: c4367ac7f3f4abb47851e7867c176cb2
   m_configObjects: {}
